@@ -1,5 +1,4 @@
 class Api::V1::OrganisationsController < ApplicationController
-
     before_action :authorized
 
     # GET all orgs

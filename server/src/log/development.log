@@ -2530,3 +2530,659 @@ FOREIGN KEY ("organisation_id")
   [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOrganisation Create (0.5ms)[0m  [1m[32mINSERT INTO "organisations" ("name", "hourly_rate", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "organisation1"], ["hourly_rate", 20], ["created_at", "2021-05-17 13:00:20.290226"], ["updated_at", "2021-05-17 13:00:20.290226"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOrganisation Create (0.4ms)[0m  [1m[32mINSERT INTO "organisations" ("name", "hourly_rate", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "organisation2"], ["hourly_rate", 40], ["created_at", "2021-05-17 13:00:20.299401"], ["updated_at", "2021-05-17 13:00:20.299401"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "alice@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "password_reset_answer", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Alice"], ["email", "alice@gmail.com"], ["password_digest", "$2a$12$kdAaSvTLRHJ2L9ZWTDhZsea5YAgAvMVNm1309Kmfl/Ncfp2nPDaz2"], ["password_reset_answer", "davidson"], ["created_at", "2021-05-17 13:00:21.099223"], ["updated_at", "2021-05-17 13:00:21.099223"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOrganisationUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."organisation_id" = ? LIMIT ?[0m  [["organisation_id", 1], ["LIMIT", 1]]
+  [1m[36mOrganisationUser Create (0.8ms)[0m  [1m[32mINSERT INTO "organisation_users" ("user_id", "organisation_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["organisation_id", 1], ["created_at", "2021-05-17 13:00:21.181376"], ["updated_at", "2021-05-17 13:00:21.181376"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."organisation_id" = ? LIMIT ?[0m  [["organisation_id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mShift Create (0.7ms)[0m  [1m[32mINSERT INTO "shifts" ("start_time", "end_time", "break_length", "user_id", "organisation_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["start_time", "2021-05-17 13:00:21.209370"], ["end_time", "2021-05-17 12:00:21.209426"], ["break_length", 10], ["user_id", 1], ["organisation_id", 1], ["created_at", "2021-05-17 13:00:21.229316"], ["updated_at", "2021-05-17 13:00:21.229316"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mShift Create (0.6ms)[0m  [1m[32mINSERT INTO "shifts" ("start_time", "end_time", "break_length", "user_id", "organisation_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["start_time", "2021-05-17 13:00:21.240947"], ["end_time", "2021-05-17 12:00:21.240967"], ["break_length", 20], ["user_id", 1], ["organisation_id", 2], ["created_at", "2021-05-17 13:00:21.241784"], ["updated_at", "2021-05-17 13:00:21.241784"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 23:00:42 +1000
+  [1m[35m (26.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::OrganisationUserController#create as */*
+  Parameters: {"user_id"=>2, "organisation_id"=>1, "organisation_user"=>{"user_id"=>2, "organisation_id"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.28ms)
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 26ms (Views: 6.3ms | ActiveRecord: 1.1ms | Allocations: 5963)
+
+
+Started POST "//api/v1/login" for ::1 at 2021-05-17 23:00:46 +1000
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.3ms | Allocations: 1584)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:24:in `token'
+app/controllers/application_controller.rb:14:in `decoded_token'
+app/controllers/application_controller.rb:28:in `user_id'
+app/controllers/application_controller.rb:31:in `current_user'
+app/controllers/api/v1/auth_controller.rb:15:in `create'
+Started POST "//api/v1/users" for ::1 at 2021-05-17 23:00:52 +1000
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"email"=>"jezdufourq1@gmail.com", "name"=>"jez dufourq1", "password"=>"[FILTERED]", "password_reset_answer"=>"[FILTERED]", "user"=>{"name"=>"jez dufourq1", "email"=>"jezdufourq1@gmail.com", "password_reset_answer"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/users_controller.rb:21:in `create'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "password_reset_answer", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "jez dufourq1"], ["email", "jezdufourq1@gmail.com"], ["password_digest", "$2a$12$gUMcoPinXbHyhYPSM24AXOMgLOQNLeW0x2RTc8UalQNydvnjGJ2Bi"], ["password_reset_answer", "davidson"], ["created_at", "2021-05-17 13:00:53.286058"], ["updated_at", "2021-05-17 13:00:53.286058"]]
+  ↳ app/controllers/api/v1/users_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/users_controller.rb:21:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.6ms)
+Completed 200 OK in 806ms (Views: 1.5ms | ActiveRecord: 3.0ms | Allocations: 7816)
+
+
+Started POST "//api/v1/login" for ::1 at 2021-05-17 23:01:07 +1000
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 401 Unauthorized in 7ms (Views: 3.5ms | ActiveRecord: 0.4ms | Allocations: 1297)
+
+
+Started POST "//api/v1/login" for ::1 at 2021-05-17 23:01:19 +1000
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"email"=>"jezdufourq1@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq1@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.62ms)
+Completed 200 OK in 797ms (Views: 11.9ms | ActiveRecord: 0.5ms | Allocations: 3274)
+
+
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 23:01:26 +1000
+Processing by Api::V1::OrganisationUserController#create as */*
+  Parameters: {"user_id"=>2, "organisation_id"=>1, "organisation_user"=>{"user_id"=>2, "organisation_id"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mOrganisation Load (0.3ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:14:in `create'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:15:in `create'
+  [1m[36mOrganisationUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:17:in `create'
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."organisation_id" = ? LIMIT ?[0m  [["organisation_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:17:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 406 Not Acceptable in 59ms (Views: 1.0ms | ActiveRecord: 3.1ms | Allocations: 10749)
+
+
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 23:01:31 +1000
+Processing by Api::V1::OrganisationUserController#create as */*
+  Parameters: {"user_id"=>2, "organisation_id"=>1, "organisation_user"=>{"user_id"=>2, "organisation_id"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:14:in `create'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:15:in `create'
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:17:in `create'
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."organisation_id" = ? LIMIT ?[0m  [["organisation_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:17:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 406 Not Acceptable in 16ms (Views: 1.0ms | ActiveRecord: 0.9ms | Allocations: 2823)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-17 23:01:39 +1000
+Processing by Api::V1::OrganisationsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisation Load (0.3ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:8:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "organisation1", hourly_rate: 20, created_at: "2021-05-17 13:00:20.290226000 +0000", updated_at: "2021-05-17 13:00:20.290226000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.82ms)
+Completed 200 OK in 12ms (Views: 8.4ms | ActiveRecord: 0.5ms | Allocations: 2496)
+
+
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 23:01:55 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisationUser Load (0.2ms)[0m  [1m[34mSELECT "organisation_users".* FROM "organisation_users" WHERE (user_id = 2)[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.17ms)
+Completed 200 OK in 8ms (Views: 3.4ms | ActiveRecord: 0.5ms | Allocations: 1557)
+
+
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 23:01:59 +1000
+Processing by Api::V1::OrganisationUserController#create as */*
+  Parameters: {"user_id"=>2, "organisation_id"=>1, "organisation_user"=>{"user_id"=>2, "organisation_id"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:14:in `create'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:15:in `create'
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:17:in `create'
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."organisation_id" = ? LIMIT ?[0m  [["organisation_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:17:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 406 Not Acceptable in 14ms (Views: 0.9ms | ActiveRecord: 0.7ms | Allocations: 2810)
+
+
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 23:02:04 +1000
+Processing by Api::V1::OrganisationUserController#create as */*
+  Parameters: {"user_id"=>2, "organisation_id"=>2, "organisation_user"=>{"user_id"=>2, "organisation_id"=>2}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:14:in `create'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:15:in `create'
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:17:in `create'
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."organisation_id" = ? LIMIT ?[0m  [["organisation_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:17:in `create'
+  [1m[36mCACHE OrganisationUser Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+  [1m[36mCACHE OrganisationUser Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."organisation_id" = ? LIMIT ?[0m  [["organisation_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+  [1m[36mOrganisationUser Create (0.7ms)[0m  [1m[32mINSERT INTO "organisation_users" ("user_id", "organisation_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["organisation_id", 2], ["created_at", "2021-05-17 13:02:04.152555"], ["updated_at", "2021-05-17 13:02:04.152555"]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+[active_model_serializers] Rendered OrganisationUserSerializer with ActiveModelSerializers::Adapter::Attributes (2.57ms)
+Completed 200 OK in 35ms (Views: 4.9ms | ActiveRecord: 3.2ms | Allocations: 6502)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-17 23:02:11 +1000
+Processing by Api::V1::OrganisationsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:8:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "organisation1", hourly_rate: 20, created_at: "2021-05-17 13:00:20.290226000 +0000", updated_at: "2021-05-17 13:00:20.290226000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.71ms)
+Completed 200 OK in 9ms (Views: 6.0ms | ActiveRecord: 0.4ms | Allocations: 1695)
+
+
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 23:02:15 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisationUser Load (0.3ms)[0m  [1m[34mSELECT "organisation_users".* FROM "organisation_users" WHERE (user_id = 2)[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (17.87ms)
+Completed 200 OK in 26ms (Views: 22.1ms | ActiveRecord: 0.7ms | Allocations: 4594)
+
+
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 23:02:18 +1000
+Processing by Api::V1::OrganisationUserController#create as */*
+  Parameters: {"user_id"=>2, "organisation_id"=>2, "organisation_user"=>{"user_id"=>2, "organisation_id"=>2}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:14:in `create'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:15:in `create'
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:17:in `create'
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."organisation_id" = ? LIMIT ?[0m  [["organisation_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:17:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 406 Not Acceptable in 15ms (Views: 0.9ms | ActiveRecord: 0.9ms | Allocations: 2885)
+
+
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 23:02:22 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisationUser Load (0.2ms)[0m  [1m[34mSELECT "organisation_users".* FROM "organisation_users" WHERE (user_id = 2)[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.91ms)
+Completed 200 OK in 16ms (Views: 12.4ms | ActiveRecord: 0.6ms | Allocations: 3182)
+
+
+Started POST "//api/v1/organisations" for ::1 at 2021-05-17 23:02:38 +1000
+Processing by Api::V1::OrganisationsController#create as */*
+  Parameters: {"hourly_rate"=>100, "name"=>"Test Orgfsfsa", "organisation"=>{"name"=>"Test Orgfsfsa", "hourly_rate"=>100}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :organisation[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:24:in `create'
+  [1m[36mOrganisation Create (0.6ms)[0m  [1m[32mINSERT INTO "organisations" ("name", "hourly_rate", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Test Orgfsfsa"], ["hourly_rate", 100], ["created_at", "2021-05-17 13:02:38.422529"], ["updated_at", "2021-05-17 13:02:38.422529"]]
+  ↳ app/controllers/api/v1/organisations_controller.rb:24:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:24:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Organisation (0.43ms)
+Completed 200 OK in 15ms (Views: 1.4ms | ActiveRecord: 2.0ms | Allocations: 2722)
+
+
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 23:02:44 +1000
+Processing by Api::V1::OrganisationUserController#create as */*
+  Parameters: {"user_id"=>2, "organisation_id"=>3, "organisation_user"=>{"user_id"=>2, "organisation_id"=>3}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:14:in `create'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:15:in `create'
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:17:in `create'
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."organisation_id" = ? LIMIT ?[0m  [["organisation_id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:17:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 406 Not Acceptable in 29ms (Views: 15.5ms | ActiveRecord: 0.9ms | Allocations: 2760)
+
+
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateOrganisations (20210517000549)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "organisations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "hourly_rate" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "password_reset_answer" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "shifts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "start_time" datetime, "end_time" datetime, "break_length" integer, "user_id" integer, "organisation_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_b1a30da2b8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_6191fd9bf7"
+FOREIGN KEY ("organisation_id")
+  REFERENCES "organisations" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_shifts_on_user_id" ON "shifts" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_shifts_on_organisation_id" ON "shifts" ("organisation_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "organisation_users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "organisation_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c09d46ca83"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_edd3c9a28c"
+FOREIGN KEY ("organisation_id")
+  REFERENCES "organisations" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_organisation_users_on_user_id" ON "organisation_users" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_organisation_users_on_organisation_id" ON "organisation_users" ("organisation_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210517000549"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-17 13:03:41.218758"], ["updated_at", "2021-05-17 13:03:41.218758"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateOrganisations (20210517000549)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "organisations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "hourly_rate" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "password_reset_answer" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "shifts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "start_time" datetime, "end_time" datetime, "break_length" integer, "user_id" integer, "organisation_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_b1a30da2b8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_6191fd9bf7"
+FOREIGN KEY ("organisation_id")
+  REFERENCES "organisations" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_shifts_on_user_id" ON "shifts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_shifts_on_organisation_id" ON "shifts" ("organisation_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "organisation_users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "organisation_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c09d46ca83"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_edd3c9a28c"
+FOREIGN KEY ("organisation_id")
+  REFERENCES "organisations" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_organisation_users_on_user_id" ON "organisation_users" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_organisation_users_on_organisation_id" ON "organisation_users" ("organisation_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210517000549"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-17 13:03:52.222614"], ["updated_at", "2021-05-17 13:03:52.222614"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOrganisation Create (0.5ms)[0m  [1m[32mINSERT INTO "organisations" ("name", "hourly_rate", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "organisation1"], ["hourly_rate", 20], ["created_at", "2021-05-17 13:04:05.340546"], ["updated_at", "2021-05-17 13:04:05.340546"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOrganisation Create (0.5ms)[0m  [1m[32mINSERT INTO "organisations" ("name", "hourly_rate", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "organisation2"], ["hourly_rate", 40], ["created_at", "2021-05-17 13:04:05.350925"], ["updated_at", "2021-05-17 13:04:05.350925"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "alice@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "password_reset_answer", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Alice"], ["email", "alice@gmail.com"], ["password_digest", "$2a$12$1/B78CUaWmVwha4rGyOFE.NO43tRNVZXxxHzDJ0/rc0QN05KI3t8q"], ["password_reset_answer", "davidson"], ["created_at", "2021-05-17 13:04:06.119004"], ["updated_at", "2021-05-17 13:04:06.119004"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."organisation_id" = ? LIMIT ?[0m  [["organisation_id", 1], ["LIMIT", 1]]
+  [1m[36mOrganisationUser Create (0.5ms)[0m  [1m[32mINSERT INTO "organisation_users" ("user_id", "organisation_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["organisation_id", 1], ["created_at", "2021-05-17 13:04:06.180216"], ["updated_at", "2021-05-17 13:04:06.180216"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."organisation_id" = ? LIMIT ?[0m  [["organisation_id", 2], ["LIMIT", 1]]
+  [1m[36mOrganisationUser Create (0.5ms)[0m  [1m[32mINSERT INTO "organisation_users" ("user_id", "organisation_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["organisation_id", 2], ["created_at", "2021-05-17 13:04:06.192771"], ["updated_at", "2021-05-17 13:04:06.192771"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mShift Create (0.5ms)[0m  [1m[32mINSERT INTO "shifts" ("start_time", "end_time", "break_length", "user_id", "organisation_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["start_time", "2021-05-17 13:04:06.201055"], ["end_time", "2021-05-17 12:04:06.201103"], ["break_length", 10], ["user_id", 1], ["organisation_id", 1], ["created_at", "2021-05-17 13:04:06.219433"], ["updated_at", "2021-05-17 13:04:06.219433"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mShift Create (0.6ms)[0m  [1m[32mINSERT INTO "shifts" ("start_time", "end_time", "break_length", "user_id", "organisation_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["start_time", "2021-05-17 13:04:06.230680"], ["end_time", "2021-05-17 12:04:06.230701"], ["break_length", 20], ["user_id", 1], ["organisation_id", 2], ["created_at", "2021-05-17 13:04:06.232248"], ["updated_at", "2021-05-17 13:04:06.232248"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+Started POST "//api/v1/users" for ::1 at 2021-05-17 23:04:17 +1000
+  [1m[35m (20.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"email"=>"jezdufourq1@gmail.com", "name"=>"jez dufourq1", "password"=>"[FILTERED]", "password_reset_answer"=>"[FILTERED]", "user"=>{"name"=>"jez dufourq1", "email"=>"jezdufourq1@gmail.com", "password_reset_answer"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/users_controller.rb:21:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "password_reset_answer", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "jez dufourq1"], ["email", "jezdufourq1@gmail.com"], ["password_digest", "$2a$12$M9xX6AfnW0IaWQyDlZFy9eXlEXfUlXlVTjBe6zHzGiiQOpvh6RHfy"], ["password_reset_answer", "davidson"], ["created_at", "2021-05-17 13:04:18.933709"], ["updated_at", "2021-05-17 13:04:18.933709"]]
+  ↳ app/controllers/api/v1/users_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/users_controller.rb:21:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.01ms)
+Completed 200 OK in 772ms (Views: 5.0ms | ActiveRecord: 3.3ms | Allocations: 9658)
+
+
+Started POST "//api/v1/organisations" for ::1 at 2021-05-17 23:04:34 +1000
+Processing by Api::V1::OrganisationsController#create as */*
+  Parameters: {"hourly_rate"=>100, "name"=>"Test Orgfsfsa", "organisation"=>{"name"=>"Test Orgfsfsa", "hourly_rate"=>100}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :organisation[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:24:in `create'
+  [1m[36mOrganisation Create (0.7ms)[0m  [1m[32mINSERT INTO "organisations" ("name", "hourly_rate", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Test Orgfsfsa"], ["hourly_rate", 100], ["created_at", "2021-05-17 13:04:34.694558"], ["updated_at", "2021-05-17 13:04:34.694558"]]
+  ↳ app/controllers/api/v1/organisations_controller.rb:24:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:24:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Organisation (0.45ms)
+Completed 200 OK in 31ms (Views: 4.2ms | ActiveRecord: 3.3ms | Allocations: 6080)
+
+
+Started POST "//api/v1/organisations" for ::1 at 2021-05-17 23:04:39 +1000
+Processing by Api::V1::OrganisationsController#create as */*
+  Parameters: {"hourly_rate"=>1003, "name"=>"Test Orgfsfsa", "organisation"=>{"name"=>"Test Orgfsfsa", "hourly_rate"=>1003}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :organisation[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:24:in `create'
+  [1m[36mOrganisation Create (0.5ms)[0m  [1m[32mINSERT INTO "organisations" ("name", "hourly_rate", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Test Orgfsfsa"], ["hourly_rate", 1003], ["created_at", "2021-05-17 13:04:39.328551"], ["updated_at", "2021-05-17 13:04:39.328551"]]
+  ↳ app/controllers/api/v1/organisations_controller.rb:24:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:24:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Organisation (0.42ms)
+Completed 200 OK in 14ms (Views: 1.3ms | ActiveRecord: 2.1ms | Allocations: 2746)
+
+
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 23:04:48 +1000
+Processing by Api::V1::OrganisationUserController#create as */*
+  Parameters: {"user_id"=>2, "organisation_id"=>3, "organisation_user"=>{"user_id"=>2, "organisation_id"=>3}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:14:in `create'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:15:in `create'
+  [1m[36mOrganisationUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."organisation_id" = ? LIMIT ?[0m  [["organisation_id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:17:in `create'
+  [1m[36mCACHE OrganisationUser Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."organisation_id" = ? LIMIT ?[0m  [["organisation_id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+  [1m[36mOrganisationUser Create (0.7ms)[0m  [1m[32mINSERT INTO "organisation_users" ("user_id", "organisation_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["organisation_id", 3], ["created_at", "2021-05-17 13:04:48.085473"], ["updated_at", "2021-05-17 13:04:48.085473"]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+[active_model_serializers] Rendered OrganisationUserSerializer with ActiveModelSerializers::Adapter::Attributes (2.77ms)
+Completed 200 OK in 97ms (Views: 22.8ms | ActiveRecord: 4.2ms | Allocations: 13020)
+
+
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 23:04:51 +1000
+Processing by Api::V1::OrganisationUserController#create as */*
+  Parameters: {"user_id"=>2, "organisation_id"=>4, "organisation_user"=>{"user_id"=>2, "organisation_id"=>4}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:14:in `create'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:15:in `create'
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."organisation_id" = ? LIMIT ?[0m  [["organisation_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:17:in `create'
+  [1m[36mCACHE OrganisationUser Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."organisation_id" = ? LIMIT ?[0m  [["organisation_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+  [1m[36mOrganisationUser Create (0.8ms)[0m  [1m[32mINSERT INTO "organisation_users" ("user_id", "organisation_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["organisation_id", 4], ["created_at", "2021-05-17 13:04:51.631368"], ["updated_at", "2021-05-17 13:04:51.631368"]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+[active_model_serializers] Rendered OrganisationUserSerializer with ActiveModelSerializers::Adapter::Attributes (1.45ms)
+Completed 200 OK in 27ms (Views: 2.4ms | ActiveRecord: 2.7ms | Allocations: 4938)
+
+
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 23:04:57 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisationUser Load (0.3ms)[0m  [1m[34mSELECT "organisation_users".* FROM "organisation_users" WHERE (user_id = 2)[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (30.84ms)
+Completed 200 OK in 42ms (Views: 37.1ms | ActiveRecord: 1.1ms | Allocations: 6752)
+
+
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 23:05:01 +1000
+Processing by Api::V1::OrganisationUserController#create as */*
+  Parameters: {"user_id"=>2, "organisation_id"=>4, "organisation_user"=>{"user_id"=>2, "organisation_id"=>4}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:14:in `create'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:15:in `create'
+  [1m[36mOrganisationUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "organisation_users" WHERE "organisation_users"."organisation_id" = ? LIMIT ?[0m  [["organisation_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:17:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 406 Not Acceptable in 12ms (Views: 0.9ms | ActiveRecord: 0.6ms | Allocations: 2317)
+
+
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 23:05:03 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisationUser Load (0.3ms)[0m  [1m[34mSELECT "organisation_users".* FROM "organisation_users" WHERE (user_id = 2)[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (20.29ms)
+Completed 200 OK in 28ms (Views: 23.5ms | ActiveRecord: 1.0ms | Allocations: 5054)
+
+
+Started GET "/api/v1/shifts" for ::1 at 2021-05-17 23:14:11 +1000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::ShiftsController#index as */*
+  Parameters: {"organisation_id"=>4, "shift"=>{"organisation_id"=>4}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisation Load (0.3ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:5:in `index'
+  [1m[36mShift Load (0.2ms)[0m  [1m[34mSELECT "shifts".* FROM "shifts" WHERE (organisation_id = 4)[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 200 OK in 48ms (Views: 4.0ms | ActiveRecord: 1.6ms | Allocations: 10387)
+
+
+Started POST "/api/v1/shifts" for ::1 at 2021-05-17 23:20:58 +1000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::ShiftsController#create as */*
+  Parameters: {"start_time"=>"2021-05-17T10:04:18.933Z", "end_time"=>"2021-05-17T12:04:18.933Z", "break_length"=>10, "user_id"=>2, "organisation_id"=>4, "shift"=>{"start_time"=>"2021-05-17T10:04:18.933Z", "end_time"=>"2021-05-17T12:04:18.933Z", "break_length"=>10, "user_id"=>2, "organisation_id"=>4}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :shift[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:12:in `create'
+  [1m[36mOrganisation Load (0.3ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:13:in `create'
+  [1m[36mShift Create (0.7ms)[0m  [1m[32mINSERT INTO "shifts" ("start_time", "end_time", "break_length", "user_id", "organisation_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["start_time", "2021-05-17 10:04:18.933000"], ["end_time", "2021-05-17 12:04:18.933000"], ["break_length", 10], ["user_id", 2], ["organisation_id", 4], ["created_at", "2021-05-17 13:20:58.464069"], ["updated_at", "2021-05-17 13:20:58.464069"]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:13:in `create'
+[active_model_serializers] Rendered ShiftSerializer with ActiveModelSerializers::Adapter::Attributes (1.57ms)
+Completed 200 OK in 94ms (Views: 4.8ms | ActiveRecord: 3.6ms | Allocations: 16867)
+
+
+Started GET "/api/v1/shifts" for ::1 at 2021-05-17 23:21:09 +1000
+Processing by Api::V1::ShiftsController#index as */*
+  Parameters: {"organisation_id"=>4, "shift"=>{"organisation_id"=>4}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:5:in `index'
+  [1m[36mShift Load (0.2ms)[0m  [1m[34mSELECT "shifts".* FROM "shifts" WHERE (organisation_id = 4)[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.0ms)
+Completed 200 OK in 11ms (Views: 5.3ms | ActiveRecord: 0.6ms | Allocations: 2342)
+
+
+Started POST "/api/v1/shifts" for ::1 at 2021-05-17 23:21:17 +1000
+Processing by Api::V1::ShiftsController#create as */*
+  Parameters: {"start_time"=>"2021-05-17T10:04:18.933Z", "end_time"=>"2021-05-17T12:04:18.933Z", "break_length"=>10, "user_id"=>1, "organisation_id"=>4, "shift"=>{"start_time"=>"2021-05-17T10:04:18.933Z", "end_time"=>"2021-05-17T12:04:18.933Z", "break_length"=>10, "user_id"=>1, "organisation_id"=>4}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :shift[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:12:in `create'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:13:in `create'
+  [1m[36mShift Create (0.8ms)[0m  [1m[32mINSERT INTO "shifts" ("start_time", "end_time", "break_length", "user_id", "organisation_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["start_time", "2021-05-17 10:04:18.933000"], ["end_time", "2021-05-17 12:04:18.933000"], ["break_length", 10], ["user_id", 1], ["organisation_id", 4], ["created_at", "2021-05-17 13:21:17.478193"], ["updated_at", "2021-05-17 13:21:17.478193"]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:13:in `create'
+[active_model_serializers] Rendered ShiftSerializer with ActiveModelSerializers::Adapter::Attributes (0.67ms)
+Completed 200 OK in 23ms (Views: 1.5ms | ActiveRecord: 2.7ms | Allocations: 4044)
+
+
+Started GET "/api/v1/shifts" for ::1 at 2021-05-17 23:21:19 +1000
+Processing by Api::V1::ShiftsController#index as */*
+  Parameters: {"organisation_id"=>4, "shift"=>{"organisation_id"=>4}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:5:in `index'
+  [1m[36mShift Load (0.3ms)[0m  [1m[34mSELECT "shifts".* FROM "shifts" WHERE (organisation_id = 4)[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.5ms)
+Completed 200 OK in 11ms (Views: 5.4ms | ActiveRecord: 0.7ms | Allocations: 2051)
+
+
