@@ -3186,3 +3186,82 @@ Processing by Api::V1::ShiftsController#index as */*
 Completed 200 OK in 11ms (Views: 5.4ms | ActiveRecord: 0.7ms | Allocations: 2051)
 
 
+Started GET "/api/v1/shifts" for ::1 at 2021-05-17 23:26:11 +1000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::ShiftsController#index as */*
+  Parameters: {"organisation_id"=>4, "shift"=>{"organisation_id"=>4}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisation Load (0.3ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:5:in `index'
+  [1m[36mShift Load (0.3ms)[0m  [1m[34mSELECT "shifts".* FROM "shifts" WHERE (organisation_id = 4)[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.12ms)
+Completed 200 OK in 84ms (Views: 24.7ms | ActiveRecord: 4.9ms | Allocations: 17140)
+
+
+Started DELETE "/api/v1/shift" for ::1 at 2021-05-17 23:28:22 +1000
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/shift"):
+  
+Started DELETE "/api/v1/shifts" for ::1 at 2021-05-17 23:28:31 +1000
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/shifts"):
+  
+Started DELETE "/api/v1/shifts" for ::1 at 2021-05-17 23:29:26 +1000
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/shifts"):
+  
+Started DELETE "/api/v1/shifts" for ::1 at 2021-05-17 23:29:41 +1000
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/shifts"):
+  
+Started DELETE "/api/v1/shifts/3" for ::1 at 2021-05-17 23:31:02 +1000
+Processing by Api::V1::ShiftsController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mShift Load (0.8ms)[0m  [1m[34mSELECT "shifts".* FROM "shifts" WHERE "shifts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:34:in `destroy'
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 4.7ms | Allocations: 13694)
+
+
+  
+NameError (undefined local variable or method `shift' for #<Api::V1::ShiftsController:0x0000000000ade8>
+Did you mean?  @shift):
+  
+app/controllers/api/v1/shifts_controller.rb:35:in `destroy'
+Started DELETE "/api/v1/shifts/3" for ::1 at 2021-05-17 23:31:13 +1000
+Processing by Api::V1::ShiftsController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mShift Load (0.4ms)[0m  [1m[34mSELECT "shifts".* FROM "shifts" WHERE "shifts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:34:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:35:in `destroy'
+  [1m[36mShift Destroy (1.1ms)[0m  [1m[31mDELETE FROM "shifts" WHERE "shifts"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:35:in `destroy'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:35:in `destroy'
+No template found for Api::V1::ShiftsController#destroy, rendering head :no_content
+Completed 204 No Content in 80ms (ActiveRecord: 6.7ms | Allocations: 13183)
+
+
+Started GET "/api/v1/shifts" for ::1 at 2021-05-17 23:31:26 +1000
+Processing by Api::V1::ShiftsController#index as */*
+  Parameters: {"organisation_id"=>4, "shift"=>{"organisation_id"=>4}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/shifts_controller.rb:5:in `index'
+  [1m[36mShift Load (0.4ms)[0m  [1m[34mSELECT "shifts".* FROM "shifts" WHERE (organisation_id = 4)[0m
+  ↳ app/controllers/api/v1/shifts_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.43ms)
+Completed 200 OK in 46ms (Views: 8.5ms | ActiveRecord: 1.7ms | Allocations: 6488)
+
+
