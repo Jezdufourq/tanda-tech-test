@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
     #  This means that you can create a user before you are authenticated
-    skip_before_action :authroized, only [:create]
+    skip_before_action :authorized, only: [:create]
 
     # GET /user - gets a single user
     def profile
@@ -28,6 +28,6 @@ class Api::V1::UsersController < ApplicationController
 
     #  private method for user permitted params
     def user_params
-        params.permite(:email, :name, :password)
+        params.permit(:email, :name, :password)
     end
 end
