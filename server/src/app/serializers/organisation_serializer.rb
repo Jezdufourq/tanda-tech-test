@@ -1,0 +1,2 @@
+class OrgnisationSerializer < ApplicationSerializer
+end
