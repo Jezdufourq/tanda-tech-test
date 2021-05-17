@@ -10,9 +10,12 @@ org2 = Organisation.create("organisation2", 40)
 # Seeding users
 userAlice = User.create(name: "Alice", email: "alice@gmail.com", password: "test123")
 
+# Sign up alice to org1 and org2
+OrganisationUser.create(user: userAlice, organisation: org1)
+OrganisationUser.create(user: userAlice, organisation: org2)
 
-
-
-
+# Create seed shifts for Alice
+shift1 = Shift.create(start_time: Time.now, end_time: 1.hour.ago, break_length: 10, organisation: org1, user: userAlice)
+shift2 = Shift.create(start_time: Time.now, end_time: 1.hour.ago, break_length: 20, organisation: org2, user: userAlice)
 
 
