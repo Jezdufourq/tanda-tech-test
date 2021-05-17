@@ -19,7 +19,7 @@ class Api::V1::UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.valid?
             @user.save
-            @token = encode_token(@user)
+            @token = issue_token(@user)
             render json: { user: @user, jwt: @token }
         else
             render json: { error: 'failed to create user' }, status: :not_acceptable
