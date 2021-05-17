@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2021_05_17_000549) do
     t.integer "organisation_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["organisation_id"], name: "index_organisation_users_on_organisation_id"
-    t.index ["user_id"], name: "index_organisation_users_on_user_id"
+    t.index ["organisation_id"], name: "index_organisation_users_on_organisation_id", unique: true
+    t.index ["user_id"], name: "index_organisation_users_on_user_id", unique: true
   end
 
   create_table "organisations", force: :cascade do |t|
