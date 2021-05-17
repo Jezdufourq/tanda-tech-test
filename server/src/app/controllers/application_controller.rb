@@ -21,7 +21,8 @@ class ApplicationController < ActionController::API
     end
 
     def token
-        request.headers['Authorization']
+        puts(request.headers['Authorization'].split(' ').last)
+        request.headers['Authorization'].split(' ').last
     end
      def user_id
         decoded_token.first['user_id']
@@ -29,7 +30,7 @@ class ApplicationController < ActionController::API
      def current_user
         @user ||= User.find_by(id: user_id)
     end
-     def logged_in?
+    def logged_in?
         !!current_user
     end
  end
