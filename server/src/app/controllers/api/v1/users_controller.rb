@@ -2,6 +2,7 @@ class Api::V1::UsersController < ApplicationController
     #  This means that you can create a user before you are authenticated
     skip_before_action :authroized, only [:create]
 
+    # GET /user - gets a single user
     def profile
         @user = User.find(params[:id])
         render json: {user: current_user}
@@ -11,11 +12,6 @@ class Api::V1::UsersController < ApplicationController
     def index
         users = User.all
         render json: users
-    end
-
-    # GET /user - gets a single user
-    def show
-        user = User.find()
     end
 
     # Create a new user
