@@ -1,6 +1,3 @@
-module Api
-    module V1
-        class ShiftsController < ApplicationController
-        end
-    end
+
+class Api::V1::ShiftsController < ApplicationController
 end
