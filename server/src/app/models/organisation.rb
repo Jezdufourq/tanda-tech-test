@@ -1,4 +1,4 @@
 class Organisation < ApplicationRecord
-    has_many :shift
-    has_many :user, through: :OrganisationUser
+    has_many :shifts
+    has_many :users, through: :OrganisationUser
 end

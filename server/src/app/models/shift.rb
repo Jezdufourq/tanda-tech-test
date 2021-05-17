@@ -1,4 +1,4 @@
 class Shift < ApplicationRecord
-    has_one :user
-    has_one :organisation
+    belongs_to :user
+    belongs_to :organisation
 end

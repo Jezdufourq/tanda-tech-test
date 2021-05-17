@@ -4,13 +4,13 @@
 # Examples:
 
 # Seeding organisations
-org1 = Organisation.create("organisation1", 20)
-org2 = Organisation.create("organisation2", 40)
+org1 = Organisation.create(name: "organisation1", hourly_rate: 20)
+org2 = Organisation.create(name: "organisation2", hourly_rate: 40)
 
 # Seeding users
 userAlice = User.create(name: "Alice", email: "alice@gmail.com", password: "test123")
 
-# Sign up alice to org1 and org2
+# # Sign up alice to org1 and org2
 OrganisationUser.create(user: userAlice, organisation: org1)
 OrganisationUser.create(user: userAlice, organisation: org2)
 

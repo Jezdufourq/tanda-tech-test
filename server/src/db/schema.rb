@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2021_05_17_000549) do
 
   create_table "organisation_users", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "organisation_id", null: false
+    t.integer "user_id"
+    t.integer "organisation_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["organisation_id"], name: "index_organisation_users_on_organisation_id"

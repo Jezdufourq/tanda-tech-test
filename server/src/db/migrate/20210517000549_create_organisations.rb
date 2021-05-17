@@ -8,7 +8,7 @@ class CreateOrganisations < ActiveRecord::Migration[6.1]
     end
     create_table :users do |t|
       t.string :name
-      t.string :email, unique: true
+      t.string :email
       t.string :password_digest
 
       t.timestamps
@@ -17,15 +17,13 @@ class CreateOrganisations < ActiveRecord::Migration[6.1]
       t.datetime :start_time
       t.datetime :end_time
       t.integer :break_length
-
-      t.belongs_to :user, index: true, foreign_key: true
-      t.belongs_to :organisation, index: true, foreign_key: true
-
+      t.belongs_to :user, foreign_key: true
+      t.belongs_to :organisation, foreign_key: true
       t.timestamps
     end
     create_table :organisation_users do |t|
-      t.belongs_to :user, null: false, foreign_key: true
-      t.belongs_to :organisation, null: false, foreign_key: true
+      t.belongs_to :user, foreign_key: true
+      t.belongs_to :organisation, foreign_key: true
 
       t.timestamps
     end
