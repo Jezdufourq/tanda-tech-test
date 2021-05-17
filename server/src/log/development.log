@@ -1969,3 +1969,69 @@ No serializer found for resource: #<Organisation id: 1, name: "Test Org", hourly
 Completed 200 OK in 9ms (Views: 6.2ms | ActiveRecord: 0.5ms | Allocations: 1874)
 
 
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 22:28:55 +1000
+  
+ActionController::RoutingError (uninitialized constant Api::V1::OrganisationUserController
+Did you mean?  Api::V1::OrganisationsUsersController
+               Api::V1::OrganisationsController):
+  
+Started POST "/api/v1/organisation-user" for ::1 at 2021-05-17 22:29:40 +1000
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/organisation-user"):
+  
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 22:29:45 +1000
+  
+ActionController::RoutingError (uninitialized constant Api::V1::OrganisationUserController
+Did you mean?  Api::V1::OrganisationsUsersController
+               Api::V1::OrganisationsController):
+  
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 22:30:22 +1000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::OrganisationUserController#create as */*
+  Parameters: {"user_id"=>1, "organisation_id"=>1, "organisation_user"=>{"user_id"=>1, "organisation_id"=>1}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 2.6ms | Allocations: 6690)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 1)):
+  
+app/controllers/api/v1/organisation_user_controller.rb:23:in `organisation_user_params'
+app/controllers/api/v1/organisation_user_controller.rb:6:in `create'
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 22:30:44 +1000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::OrganisationUserController#create as */*
+  Parameters: {"user_id"=>1, "organisation_id"=>1, "organisation_user"=>{"user_id"=>1, "organisation_id"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 1.9ms | Allocations: 7010)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 1)):
+  
+app/controllers/api/v1/organisation_user_controller.rb:23:in `organisation_user_params'
+app/controllers/api/v1/organisation_user_controller.rb:6:in `create'
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 22:32:27 +1000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::OrganisationUserController#create as */*
+  Parameters: {"user_id"=>1, "organisation_id"=>1, "organisation_user"=>{"user_id"=>1, "organisation_id"=>1}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mOrganisation Load (1.0ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:6:in `create'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:10:in `create'
+  [1m[36mOrganisationUser Create (2.6ms)[0m  [1m[32mINSERT INTO "organisation_users" ("user_id", "organisation_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["organisation_id", 1], ["created_at", "2021-05-17 12:32:28.014500"], ["updated_at", "2021-05-17 12:32:28.014500"]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:10:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with OrganisationUser (0.46ms)
+Completed 200 OK in 92ms (Views: 3.6ms | ActiveRecord: 8.9ms | Allocations: 16687)
+
+

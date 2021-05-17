@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       post '/login', to: 'auth#create'
-      get '/current_user', to: 'auth#show'
-      post '/sign_up', to: 'users#create'
-      put '/reset_password', to: 'auth#update'
+      get '/current-user', to: 'auth#show'
+      post '/sign-up', to: 'users#create'
+      put '/reset-password', to: 'auth#update'
       # TODO: /log_out log out auth route
 
       # post org
