@@ -8,8 +8,9 @@ Rails.application.routes.draw do
       resources :organisations
       resources :shifts
       post '/login', to: 'auth#create'
-        get '/current_user', to: 'auth#show'
-        post '/sign_up', to: 'users#create'
+      get '/current_user', to: 'auth#show'
+      post '/sign_up', to: 'users#create'
+      put '/reset-password', to: 'auth#update'
     end
   end
 
