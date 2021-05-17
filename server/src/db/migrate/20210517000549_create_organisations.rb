@@ -23,8 +23,8 @@ class CreateOrganisations < ActiveRecord::Migration[6.1]
       t.timestamps
     end
     create_table :organisation_users do |t|
-      t.belongs_to :user, foreign_key: true, unique: true
-      t.belongs_to :organisation, foreign_key: true, unique: true
+      t.belongs_to :user, foreign_key: true, index: { unique: true }
+      t.belongs_to :organisation, foreign_key: true, index: { unique: true }
 
       t.timestamps
     end

@@ -8,7 +8,7 @@ org1 = Organisation.create(name: "organisation1", hourly_rate: 20)
 org2 = Organisation.create(name: "organisation2", hourly_rate: 40)
 
 # Seeding users
-userAlice = User.create(name: "Alice", email: "alice@gmail.com", password: "test123")
+userAlice = User.create(name: "Alice", email: "alice@gmail.com", password: "test123", password_reset_answer: "davidson")
 
 # # Sign up alice to org1 and org2
 OrganisationUser.create(user: userAlice, organisation: org1)
