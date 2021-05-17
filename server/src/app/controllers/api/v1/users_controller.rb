@@ -24,10 +24,10 @@ class Api::V1::UsersController < ApplicationController
         else
             render json: { error: 'failed to create user' }, status: :not_acceptable
         end
-      end
+    end
 
-    #  private method for user permitted params
+    private
     def user_params
-        params.permit(:email, :name, :password)
+        params.permit(:email, :name, :password, :user)
     end
 end
