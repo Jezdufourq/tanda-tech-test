@@ -1,6 +1,14 @@
 
 class Api::V1::OrganisationUserController < ApplicationController
     before_action :authorized
+
+    # GET all of the organisations for the current user
+    def index
+        @user = current_user()
+        @organisation_user = OrganisationUser.where("user_id = ?", @user.id)
+        render json: @organisation_user, status: 200
+    end
+
     # POST Sign up to an organisation
     def create
         organisation = Organisation.find_by(id: organisation_user_params[:organisation_id])
@@ -16,6 +24,8 @@ class Api::V1::OrganisationUserController < ApplicationController
 
     # DELETE Remove an organisation
     def destroy
+        @organisation_user = OrganisationUser.find(params[:id])
+        @organisation_user.destroy
     end
 
     private

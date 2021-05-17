@@ -2035,3 +2035,235 @@ Processing by Api::V1::OrganisationUserController#create as */*
 Completed 200 OK in 92ms (Views: 3.6ms | ActiveRecord: 8.9ms | Allocations: 16687)
 
 
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 22:40:41 +1000
+  
+SyntaxError (/Users/jezdufourq/OneDrive - Queensland University of Technology/CODING/TESTS/Tanda/tanda-test/server/src/app/controllers/api/v1/organisation_user_controller.rb:8: syntax error, unexpected ':', expecting ')'
+...nisationUser.find_by(:user_id :user.id)
+...                              ^
+/Users/jezdufourq/OneDrive - Queensland University of Technology/CODING/TESTS/Tanda/tanda-test/server/src/app/controllers/api/v1/organisation_user_controller.rb:8: syntax error, unexpected ')', expecting `end'
+...User.find_by(:user_id :user.id)
+...                              ^
+):
+  
+app/controllers/api/v1/organisation_user_controller.rb:8: syntax error, unexpected ':', expecting ')'
+app/controllers/api/v1/organisation_user_controller.rb:8: syntax error, unexpected ')', expecting `end'
+app/controllers/api/v1/organisation_user_controller.rb:8: syntax error, unexpected ':', expecting ')'
+app/controllers/api/v1/organisation_user_controller.rb:8: syntax error, unexpected ')', expecting `end'
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 22:41:38 +1000
+  
+SyntaxError (/Users/jezdufourq/OneDrive - Queensland University of Technology/CODING/TESTS/Tanda/tanda-test/server/src/app/controllers/api/v1/organisation_user_controller.rb:8: syntax error, unexpected '=', expecting ']'
+...ll, :conditions => ['user_id' = user.id])
+...                              ^
+/Users/jezdufourq/OneDrive - Queensland University of Technology/CODING/TESTS/Tanda/tanda-test/server/src/app/controllers/api/v1/organisation_user_controller.rb:8: syntax error, unexpected ']', expecting `end'
+...itions => ['user_id' = user.id])
+...                              ^
+):
+  
+app/controllers/api/v1/organisation_user_controller.rb:8: syntax error, unexpected '=', expecting ']'
+app/controllers/api/v1/organisation_user_controller.rb:8: syntax error, unexpected ']', expecting `end'
+app/controllers/api/v1/organisation_user_controller.rb:8: syntax error, unexpected '=', expecting ']'
+app/controllers/api/v1/organisation_user_controller.rb:8: syntax error, unexpected ']', expecting `end'
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 22:41:50 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 1.4ms | Allocations: 7089)
+
+
+  
+ArgumentError (Unsupported argument type: all (Symbol)):
+  
+app/controllers/api/v1/organisation_user_controller.rb:8:in `index'
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 22:43:00 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 2.3ms | Allocations: 7483)
+
+
+  
+ArgumentError (Unsupported argument type: all (Symbol)):
+  
+app/controllers/api/v1/organisation_user_controller.rb:8:in `index'
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 22:43:47 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 1.7ms | Allocations: 9201)
+
+
+  
+NameError (undefined local variable or method `user' for #<Api::V1::OrganisationUserController:0x000000000125c0>
+Did you mean?  @user):
+  
+app/controllers/api/v1/organisation_user_controller.rb:8:in `index'
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 22:43:55 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 1.5ms | Allocations: 7463)
+
+
+  
+ArgumentError (Unsupported argument type: all (Symbol)):
+  
+app/controllers/api/v1/organisation_user_controller.rb:8:in `index'
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 22:44:04 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 1.6ms | Allocations: 7526)
+
+
+  
+ArgumentError (Unsupported argument type: all (Symbol)):
+  
+app/controllers/api/v1/organisation_user_controller.rb:8:in `index'
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 22:48:14 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisationUser Load (0.8ms)[0m  [1m[34mSELECT "organisation_users".* FROM "organisation_users" WHERE (organisation_user.user.id = 2)[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+Completed 500 Internal Server Error in 41ms (ActiveRecord: 3.2ms | Allocations: 8384)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: organisation_user.user.id):
+  
+app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 22:48:31 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisationUser Load (0.8ms)[0m  [1m[34mSELECT "organisation_users".* FROM "organisation_users" WHERE (organisation_user.user = 2)[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 2.4ms | Allocations: 8436)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: organisation_user.user):
+  
+app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 22:48:45 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisationUser Load (0.8ms)[0m  [1m[34mSELECT "organisation_users".* FROM "organisation_users" WHERE (user = 2)[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 3.1ms | Allocations: 8435)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: user):
+  
+app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 22:48:56 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisationUser Load (1.4ms)[0m  [1m[34mSELECT "organisation_users".* FROM "organisation_users" WHERE (user_id = 2)[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.19ms)
+Completed 200 OK in 46ms (Views: 4.2ms | ActiveRecord: 3.3ms | Allocations: 8449)
+
+
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 22:49:08 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 1.7ms | Allocations: 8579)
+
+
+  
+NameError (undefined local variable or method `user' for #<Api::V1::OrganisationUserController:0x00000000019bb8>
+Did you mean?  @user):
+  
+app/controllers/api/v1/organisation_user_controller.rb:8:in `index'
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 22:49:14 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisationUser Load (0.3ms)[0m  [1m[34mSELECT "organisation_users".* FROM "organisation_users" WHERE (user_id = 2)[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:10:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.65ms)
+Completed 200 OK in 43ms (Views: 4.4ms | ActiveRecord: 2.0ms | Allocations: 8446)
+
+
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 22:49:32 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisationUser Load (0.3ms)[0m  [1m[34mSELECT "organisation_users".* FROM "organisation_users" WHERE (user_id = 2)[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:11:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 200 OK in 54ms (Views: 4.4ms | ActiveRecord: 2.2ms | Allocations: 8385)
+
+
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 22:49:45 +1000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::OrganisationUserController#create as */*
+  Parameters: {"user_id"=>2, "organisation_id"=>1, "organisation_user"=>{"user_id"=>2, "organisation_id"=>1}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mOrganisation Load (0.7ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:14:in `create'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+  [1m[36mOrganisationUser Create (1.7ms)[0m  [1m[32mINSERT INTO "organisation_users" ("user_id", "organisation_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["organisation_id", 1], ["created_at", "2021-05-17 12:49:45.276218"], ["updated_at", "2021-05-17 12:49:45.276218"]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+[active_model_serializers] Rendered OrganisationUserSerializer with ActiveModelSerializers::Adapter::Attributes (0.97ms)
+Completed 200 OK in 85ms (Views: 5.4ms | ActiveRecord: 7.3ms | Allocations: 15477)
+
+
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 22:49:55 +1000
+Processing by Api::V1::OrganisationUserController#create as */*
+  Parameters: {"user_id"=>2, "organisation_id"=>1, "organisation_user"=>{"user_id"=>2, "organisation_id"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:14:in `create'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+  [1m[36mOrganisationUser Create (0.8ms)[0m  [1m[32mINSERT INTO "organisation_users" ("user_id", "organisation_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["organisation_id", 1], ["created_at", "2021-05-17 12:49:55.660299"], ["updated_at", "2021-05-17 12:49:55.660299"]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+[active_model_serializers] Rendered OrganisationUserSerializer with ActiveModelSerializers::Adapter::Attributes (0.45ms)
+Completed 200 OK in 20ms (Views: 1.5ms | ActiveRecord: 2.5ms | Allocations: 3465)
+
+
