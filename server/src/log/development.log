@@ -2267,3 +2267,47 @@ Processing by Api::V1::OrganisationUserController#create as */*
 Completed 200 OK in 20ms (Views: 1.5ms | ActiveRecord: 2.5ms | Allocations: 3465)
 
 
+Started POST "/api/v1/organisation_user" for ::1 at 2021-05-17 22:50:47 +1000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::OrganisationUserController#create as */*
+  Parameters: {"user_id"=>2, "organisation_id"=>1, "organisation_user"=>{"user_id"=>2, "organisation_id"=>1}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:14:in `create'
+[31mUnpermitted parameter: :organisation_user[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+  [1m[36mOrganisationUser Create (0.8ms)[0m  [1m[32mINSERT INTO "organisation_users" ("user_id", "organisation_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["organisation_id", 1], ["created_at", "2021-05-17 12:50:47.904130"], ["updated_at", "2021-05-17 12:50:47.904130"]]
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:18:in `create'
+[active_model_serializers] Rendered OrganisationUserSerializer with ActiveModelSerializers::Adapter::Attributes (2.11ms)
+Completed 200 OK in 80ms (Views: 5.8ms | ActiveRecord: 6.0ms | Allocations: 15717)
+
+
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-17 22:50:54 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:31:in `current_user'
+  [1m[36mOrganisationUser Load (0.2ms)[0m  [1m[34mSELECT "organisation_users".* FROM "organisation_users" WHERE (user_id = 2)[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mCACHE Organisation Load (0.0ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers]   [1m[36mCACHE Organisation Load (0.0ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations" WHERE "organisations"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (36.26ms)
+Completed 200 OK in 44ms (Views: 39.8ms | ActiveRecord: 0.8ms | Allocations: 8511)
+
+
