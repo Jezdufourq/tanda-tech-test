@@ -3,7 +3,7 @@ class Api::V1::UsersController < ApplicationController
     skip_before_action :authorized, only: [:create]
 
     # GET /user - gets a single user
-    def profile
+    def show
         @user = User.find(params[:id])
         render json: {user: current_user}
     end

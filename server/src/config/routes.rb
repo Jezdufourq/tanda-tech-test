@@ -5,12 +5,29 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users
-      resources :organisations
       resources :shifts
       post '/login', to: 'auth#create'
       get '/current_user', to: 'auth#show'
       post '/sign_up', to: 'users#create'
-      put '/reset-password', to: 'auth#update'
+      put '/reset_password', to: 'auth#update'
+
+      # /log_out log out auth route
+
+      # post org
+      # put org
+      # get org
+      # del org
+      resources :organisations
+
+      # post org_users
+      # del org_users
+
+      # get shifts on org id
+      # post shifts
+      # put shifts
+      # delete shifts
+
+
     end
   end
 
