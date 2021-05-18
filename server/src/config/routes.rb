@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get '/current-user', to: 'auth#show'
       post '/sign-up', to: 'users#create'
       put '/reset-password', to: 'auth#update'
+      delete '/logout', to: 'auth#destroy'
       # TODO: /log_out log out auth route
 
       # post org

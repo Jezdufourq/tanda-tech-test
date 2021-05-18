@@ -10,6 +10,7 @@ class Api::V1::AuthController < ApplicationController
         user = User.find_by(email: user_login_params[:email])
         if user && user.authenticate(user_login_params[:password])
             token = issue_token(user)
+            cookies.signed[:jwt] = {value: token, httponly: true, expires: 1.hour.from_now}
             render json: {user: UserSerializer.new(user), jwt: token}
         else
             render json: {error: 'The user you are after could not be found'}, status: 401
@@ -38,6 +39,11 @@ class Api::V1::AuthController < ApplicationController
         else
             render json: { error: 'We could not reset your password because the answer is incorrect'}, status: 402
         end
+    end
+
+    # DELETE /logout
+    def destroy
+        cookies.delete(:jwt)
     end
 
     # private login parameters for the login route

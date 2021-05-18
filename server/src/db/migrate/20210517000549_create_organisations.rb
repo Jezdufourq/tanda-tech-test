@@ -18,6 +18,8 @@ class CreateOrganisations < ActiveRecord::Migration[6.1]
       t.datetime :start_time
       t.datetime :end_time
       t.integer :break_length
+      t.float :hours_worked
+      t.float :shift_cost
       t.belongs_to :user, foreign_key: true
       t.belongs_to :organisation, foreign_key: true
       t.timestamps

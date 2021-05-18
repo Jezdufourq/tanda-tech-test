@@ -15,7 +15,6 @@ require "action_view/railtie"
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
-config.middleware.use ActionDispatch::Cookies
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -25,6 +24,9 @@ module Src
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+
+    # Cookie configuration
+    config.middleware.use ActionDispatch::Cookies
 
     # Configuration for the application, engines, and railties goes here.
     #

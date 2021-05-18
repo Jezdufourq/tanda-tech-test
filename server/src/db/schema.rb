@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2021_05_17_000549) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer "break_length"
+    t.float "hours_worked"
+    t.float "shift_cost"
     t.integer "user_id"
     t.integer "organisation_id"
     t.datetime "created_at", precision: 6, null: false

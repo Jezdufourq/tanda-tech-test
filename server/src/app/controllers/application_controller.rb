@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
     include ::ActionController::Cookies
+
     before_action :authorized
 
     def jwt_key
@@ -21,7 +22,6 @@ class ApplicationController < ActionController::API
     end
 
     def token
-        puts(request.headers['Authorization'].split(' ').last)
         request.headers['Authorization'].split(' ').last
     end
      def user_id
