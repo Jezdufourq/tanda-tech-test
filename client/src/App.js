@@ -3,6 +3,7 @@ import "./App.css";
 import SignIn from "./components/signIn";
 import SignUp from "./components/signUp";
 import Home from "./components/home";
+import Shifts from "./components/shifts";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route path="/home">
           <Home />
+        </Route>
+        <Route path="/shifts">
+          <Shifts />
         </Route>
       </Switch>
     </Router>
