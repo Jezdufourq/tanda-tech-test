@@ -40,7 +40,7 @@ export default function Home() {
   const [name, setName] = useState("Jez");
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="m">
       <CssBaseline />
       <div className={classes.heading}>
         <Typography component="h1" variant="h5">

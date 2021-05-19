@@ -1,25 +1,44 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, makeStyles } from "@material-ui/core";
+import { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  makeStyles,
+  Box,
+  Button,
+} from "@material-ui/core";
 
-const useStyles = makeStyles(() => ({
-  header: {
-    backgroundColor: "primary",
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
   },
-  logo: {
-    fontFamily: "Work Sans, sans-serif",
-    fontWeight: 600,
-    color: "#FFFEFE",
-    textAlign: "left",
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+  text: {
+    color: "#ffffff",
   },
 }));
 
 export default function Header() {
-  const { header, logo } = useStyles();
+  const classes = useStyles();
+  const [name, setName] = useState("Jez");
   return (
-    <header>
-      <AppBar className={header}>
-        <Toolbar>Hi From Desktop Header</Toolbar>
+    <div className={classes.root}>
+      <AppBar position="static" style={{ boxShadow: "none" }}>
+        <Toolbar>
+          <Typography variant="h5">
+            <Box fontWeight="fontWeightBold" className={classes.text}>
+              You are Signed In As
+            </Box>
+          </Typography>
+          <Button>Log Out</Button>
+        </Toolbar>
       </AppBar>
-    </header>
+    </div>
   );
 }
