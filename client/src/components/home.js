@@ -40,7 +40,7 @@ export const Home = (props) => {
   const [name, setName] = useState("Jez");
 
   return (
-    <Container component="main" maxWidth="m">
+    <Container component="main" maxWidth="sm">
       <CssBaseline />
       <div className={classes.heading}>
         <Typography component="h1" variant="h5">

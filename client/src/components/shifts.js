@@ -24,7 +24,7 @@ export const Shifts = (props) => {
   const [orgName, setOrgName] = useState("Organisation1");
   return (
     <div>
-      <Container component="main" maxWidth="m">
+      <Container component="main" maxWidth="sm">
         <CssBaseline />
         <div className={classes.heading}>
           <Typography component="h1" variant="h5">

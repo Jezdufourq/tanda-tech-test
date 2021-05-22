@@ -1,10 +1,11 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-export const ProtectedRoute = (
-  { component: Component, ...rest },
-  isLoggedIn
-) => {
+export const ProtectedRoute = ({
+  component: Component,
+  isLoggedIn,
+  ...rest
+}) => {
   return (
     <Route
       {...rest}
@@ -29,9 +30,8 @@ export const ProtectedRoute = (
 };
 
 function mapStateToProps(state) {
-  const { user, isLoggedIn } = state.auth;
+  const { isLoggedIn } = state.auth;
   return {
-    user,
     isLoggedIn,
   };
 }

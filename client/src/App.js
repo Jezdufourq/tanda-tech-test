@@ -12,35 +12,29 @@ import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { Home } from "./components/Home";
 import { Shifts } from "./components/Shifts";
+import { ForgotPassword } from "./components/ForgotPassword";
+import { NotFound } from "./components/NotFound";
 import Header from "./components/Header";
 
-import { logout } from "./actions/auth";
+import { ProtectedRoute } from "./components/protected.route";
 
-function App({ user, isLoggedIn }) {
-  const [currentUser, setCurrentUser] = useState("");
-
+function App() {
   return (
     <Router>
       <Header />
       <div>
         <Switch>
-          <Route exact path={"/Home"} component={Home}>
-            {isLoggedIn ? <Redirect to="/" /> : <Home />}
-          </Route>
-
           <Route exact path={"/"} component={Login} />
           <Route exact path={"/register"} component={Register} />
-          <Route exact path={"/shifts"} component={Shifts} />
+          <Route exact path={"/forgot-password"} component={ForgotPassword} />
+          <ProtectedRoute exact path={"/shifts"} component={Shifts} />
+          <ProtectedRoute exact path={"/home"} component={Home} />
+
+          <Route path="*" component={NotFound} />
         </Switch>
       </div>
     </Router>
   );
 }
-function mapStateToProps(state) {
-  const { user, isLoggedIn } = state.auth;
-  return {
-    user,
-    isLoggedIn,
-  };
-}
-export default connect(mapStateToProps)(App);
+
+export default App;

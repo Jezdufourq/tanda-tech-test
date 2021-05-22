@@ -2,14 +2,16 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
 import { Box } from "@material-ui/core";
+
+import { useState } from "react";
+import { connect } from "react-redux";
+import { login } from "../actions/auth";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -33,15 +35,33 @@ const useStyles = makeStyles((theme) => ({
 
 export const Login = (props) => {
   const classes = useStyles();
+  const [loading, setLoading] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const { dispatch, history } = props;
+  function handleLogin(e) {
+    e.preventDefault();
+
+    this.loading = true;
+
+    dispatch(login(this.state.username, this.state.password))
+      .then(() => {
+        history.push("/home");
+        window.location.reload();
+      })
+      .catch(() => {
+        this.loading = false;
+      });
+  }
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          <Box fontWeight="fontWeightBold"> Welcome Back! 👋 </Box>
+          <Box fontWeight="fontWeightBold"> Welcome Back!👋 </Box>
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleLogin}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -90,3 +110,11 @@ export const Login = (props) => {
     </Container>
   );
 };
+
+function mapStateToProps(state) {
+  const { isLoggedIn } = state.auth;
+  return {
+    isLoggedIn,
+  };
+}
+export default connect(mapStateToProps)(Login);
