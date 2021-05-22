@@ -1,8 +1,5 @@
 class ApplicationController < ActionController::API
-    include ::ActionController::Cookies
-
-    before_action :authorized
-
+    skip_before_action :authorized, raise: false
     def jwt_key
         Rails.application.credentials.jwt_key
     end
@@ -17,7 +14,8 @@ class ApplicationController < ActionController::API
           [{error: "Invalid Token"}]
         end
     end
-     def authorized
+
+    def authorized
         render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
     end
 

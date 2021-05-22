@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export const Register = (props) => {
   const classes = useStyles();
 
   return (
@@ -38,7 +38,7 @@ export default function SignIn() {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Welcome Back! 👋
+          Hello 👋 Sign Up Below
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -46,8 +46,19 @@ export default function SignIn() {
             margin="normal"
             required
             fullWidth
+            id="name"
+            label="What is your name?"
+            name="name"
+            autoComplete="name"
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
             id="email"
-            label="Email Address"
+            label="What is your Email Addy?"
             name="email"
             autoComplete="email"
             autoFocus
@@ -58,9 +69,21 @@ export default function SignIn() {
             required
             fullWidth
             name="password"
-            label="Password"
+            label="Enter a Password!"
             type="password"
             id="password"
+            autoComplete="current-password"
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="forgot-password"
+            label="Enter forget password code"
+            helperText="Use this code to reset your password"
+            type="password"
+            id="forgot-password"
             autoComplete="current-password"
           />
           <Button
@@ -74,13 +97,8 @@ export default function SignIn() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link to="/forgot-password" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link to="/sign-up" variant="body2">
-                {"Don't have an account? Sign Up"}
+              <Link to="/sign-in" variant="body2">
+                ⬅️ Back to Login
               </Link>
             </Grid>
           </Grid>
@@ -88,4 +106,4 @@ export default function SignIn() {
       </div>
     </Container>
   );
-}
+};

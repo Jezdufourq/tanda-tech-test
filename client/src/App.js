@@ -1,39 +1,46 @@
 import React from "react";
-import "./App.css";
-import SignIn from "./components/signIn";
-import SignUp from "./components/signUp";
-import Home from "./components/home";
-import Shifts from "./components/shifts";
-import Header from "./components/header";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
-function App() {
+import { Login } from "./components/Login";
+import { Register } from "./components/Register";
+import { Home } from "./components/Home";
+import { Shifts } from "./components/Shifts";
+import Header from "./components/header";
+
+import { logout } from "./actions/auth";
+
+function App({ user, isLoggedIn }) {
+  const [currentUser, setCurrentUser] = useState("");
+
   return (
-    <div className="App">
+    <Router>
       <Header />
-      <Router>
+      <div>
         <Switch>
-          <Route path="/sign-in">
-            <SignIn />
+          <Route exact path={"/Home"} component={Home}>
+            {isLoggedIn ? <Redirect to="/" /> : <Home />}
           </Route>
-          <Route path="/forgot-password">
-            <div>
-              <p>This is a forgot password link</p>
-            </div>
-          </Route>
-          <Route path="/sign-up">
-            <SignUp />
-          </Route>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/shifts">
-            <Shifts />
-          </Route>
+
+          <Route exact path={"/login"} component={Login} />
+          <Route exact path={"/register"} component={Register} />
+          <Route exact path={"/shifts"} component={Shifts} />
         </Switch>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
-
-export default App;
+function mapStateToProps(state) {
+  const { user, isLoggedIn } = state.auth;
+  return {
+    user,
+    isLoggedIn,
+  };
+}
+export default connect(mapStateToProps)(App);

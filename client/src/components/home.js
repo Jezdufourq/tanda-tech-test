@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Home() {
+export const Home = (props) => {
   const classes = useStyles();
   const [name, setName] = useState("Jez");
 
@@ -77,4 +77,4 @@ export default function Home() {
       </Button>
     </Container>
   );
-}
+};

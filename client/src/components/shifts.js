@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Shifts() {
+export const Shifts = (props) => {
   const classes = useStyles();
   const [orgName, setOrgName] = useState("Organisation1");
   return (
@@ -40,4 +40,4 @@ export default function Shifts() {
       </Container>
     </div>
   );
-}
+};

@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
     #  This means that you can create a user before you are authenticated
-    skip_before_action :authorized, only: [:create]
+    skip_before_action :authorized, only: [:create], raise: false
 
     # GET /user - gets a single user
     def show
@@ -14,13 +14,13 @@ class Api::V1::UsersController < ApplicationController
         render json: users
     end
 
+    # POST /sign-up
     # Create a new user
     def create
         @user = User.new(user_params)
         if @user.valid?
             @user.save
-            @token = issue_token(@user)
-            render json: { user: @user, jwt: @token }
+            render json: @user
         else
             render json: { error: 'failed to create user' }, status: :not_acceptable
         end

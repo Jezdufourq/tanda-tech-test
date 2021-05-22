@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { connect } from "react-redux";
 import {
   AppBar,
   Toolbar,
@@ -20,25 +21,42 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   text: {
-    color: "#ffffff",
+    color: "black",
+  },
+  headerStyle: {
+    backgroundColor: "white",
+    boxShadow: "none",
   },
 }));
 
-export default function Header() {
+function Header({ user, isLoggedIn }) {
   const classes = useStyles();
-  const [name, setName] = useState("Jez");
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ boxShadow: "none" }}>
+      <AppBar position="static" className={classes.headerStyle}>
         <Toolbar>
           <Typography variant="h5">
-            <Box fontWeight="fontWeightBold" className={classes.text}>
-              You are Signed In As
-            </Box>
+            {isLoggedIn ? (
+              <Box fontWeight="fontWeightBold" className={classes.text}>
+                You are Signed In As {user}
+              </Box>
+            ) : (
+              <Box fontWeight="fontWeightBold" className={classes.text}>
+                Please Log In
+              </Box>
+            )}
           </Typography>
-          <Button>Log Out</Button>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
+function mapStateToProps(state) {
+  const { user, isLoggedIn } = state.auth;
+  return {
+    user,
+    isLoggedIn,
+  };
+}
+
+export default connect(mapStateToProps)(Header);

@@ -4,19 +4,19 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :api do
     namespace :v1 do
-      resources :users
-      post '/login', to: 'auth#create'
-      get '/current-user', to: 'auth#show'
+      post '/sign-in', to: 'auth#create'
       post '/sign-up', to: 'users#create'
+      get '/current-user', to: 'auth#show'
       put '/reset-password', to: 'auth#update'
       delete '/logout', to: 'auth#destroy'
-      # TODO: /log_out log out auth route
 
       # post org
       # put org
       # get org
       # del org
       resources :organisations
+
+      resources :users
 
       # post org_users - joining an organisation
       # del org_users - removing yourself from organisation

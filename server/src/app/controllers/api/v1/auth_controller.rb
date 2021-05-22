@@ -3,25 +3,23 @@ class Api::V1::AuthController < ApplicationController
     # This handles authentication on the APIs
     # For example I would put before_action :authorized so that
     # the user needs to be authorized to access the APIs
-    skip_before_action :authorized, only: [:create]
+    skip_before_action :authorized, only: [:create], raise: false
 
-    # POST /login
+    # POST /sign-in
     def create
-        user = User.find_by(email: user_login_params[:email])
-        if user && user.authenticate(user_login_params[:password])
-            token = issue_token(user)
-            cookies.signed[:jwt] = {value: token, httponly: true, expires: 1.hour.from_now}
-            render json: {user: UserSerializer.new(user), jwt: token}
+        @user = User.find_by_email(user_login_params[:email])
+        if @user && @user.authenticate(user_login_params[:password])
+            token = issue_token(@user)
+            render json: {user: UserSerializer.new(@user), jwt: token}
         else
-            render json: {error: 'The user you are after could not be found'}, status: 401
         end
     end
 
     # GET /current_user
     def show
-        user = User.find_by(id: user_id)
+        @user = User.find_by(id: user_id)
         if logged_in?
-            render json: user
+            render json: @user
         else
             render json: { error: 'No user could be found'}, status: 401
         end
@@ -33,9 +31,9 @@ class Api::V1::AuthController < ApplicationController
     def update
         user = User.find_by(id: user_id)
         if user.password_reset_answer == :password_reset_answer
-            user.update(password: :updated_password)
-            user.save
-            render json: user
+            @user.update(password: :updated_password)
+            @user.save
+            render json: @user
         else
             render json: { error: 'We could not reset your password because the answer is incorrect'}, status: 402
         end

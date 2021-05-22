@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+export const Login = (props) => {
   const classes = useStyles();
 
   return (
@@ -38,7 +38,7 @@ export default function SignUp() {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Hello 👋 Sign Up Below
+          Welcome Back! 👋
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -46,19 +46,8 @@ export default function SignUp() {
             margin="normal"
             required
             fullWidth
-            id="name"
-            label="What is your name?"
-            name="name"
-            autoComplete="name"
-            autoFocus
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
             id="email"
-            label="What is your Email Addy?"
+            label="Email Address"
             name="email"
             autoComplete="email"
             autoFocus
@@ -69,21 +58,9 @@ export default function SignUp() {
             required
             fullWidth
             name="password"
-            label="Enter a Password!"
+            label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="forgot-password"
-            label="Enter forget password code"
-            helperText="Use this code to reset your password"
-            type="password"
-            id="forgot-password"
             autoComplete="current-password"
           />
           <Button
@@ -97,8 +74,13 @@ export default function SignUp() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link to="/sign-in" variant="body2">
-                ⬅️ Back to Login
+              <Link to="/forgot-password" variant="body2">
+                Forgot password?
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link to="/sign-up" variant="body2">
+                {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
           </Grid>
@@ -106,4 +88,4 @@ export default function SignUp() {
       </div>
     </Container>
   );
-}
+};
