@@ -97,7 +97,7 @@ export const Register = (props) => {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link to="/sign-in" variant="body2">
+              <Link to="/" variant="body2">
                 ⬅️ Back to Login
               </Link>
             </Grid>

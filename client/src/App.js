@@ -12,7 +12,7 @@ import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { Home } from "./components/Home";
 import { Shifts } from "./components/Shifts";
-import Header from "./components/header";
+import Header from "./components/Header";
 
 import { logout } from "./actions/auth";
 
@@ -28,7 +28,7 @@ function App({ user, isLoggedIn }) {
             {isLoggedIn ? <Redirect to="/" /> : <Home />}
           </Route>
 
-          <Route exact path={"/login"} component={Login} />
+          <Route exact path={"/"} component={Login} />
           <Route exact path={"/register"} component={Register} />
           <Route exact path={"/shifts"} component={Shifts} />
         </Switch>

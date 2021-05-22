@@ -40,11 +40,7 @@ function Header({ user, isLoggedIn }) {
               <Box fontWeight="fontWeightBold" className={classes.text}>
                 You are Signed In As {user}
               </Box>
-            ) : (
-              <Box fontWeight="fontWeightBold" className={classes.text}>
-                Please Log In
-              </Box>
-            )}
+            ) : null}
           </Typography>
         </Toolbar>
       </AppBar>
