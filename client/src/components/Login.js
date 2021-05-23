@@ -48,7 +48,6 @@ export const Login = ({ history }, message, isLoggedIn) => {
   function handleSubmit(event) {
     setLoading(true);
     event.preventDefault();
-    console.log("Email: ", email, "Password: ", password);
     dispatch(login(email, password))
       .then(() => {
         // history.push("/home");

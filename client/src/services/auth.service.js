@@ -32,11 +32,12 @@ class AuthService {
     localStorage.removeItem("accessToken");
   }
 
-  register(username, email, password) {
+  register(name, email, password, passwordCode) {
     return axios.post(API_URL + "sign-up", {
-      username,
-      email,
-      password,
+      name: name,
+      email: email,
+      password: password,
+      password_reset_answer: passwordCode,
     });
   }
 }

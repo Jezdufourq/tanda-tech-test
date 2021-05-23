@@ -8,6 +8,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
+import { useState } from "react";
+import { connect } from "react-redux";
+import { register } from "../actions/auth";
+import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -31,6 +35,27 @@ const useStyles = makeStyles((theme) => ({
 
 export const Register = (props) => {
   const classes = useStyles();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordCode, setPasswordCode] = useState("");
+
+  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
+
+  function handleRegister(event) {
+    setLoading(true);
+    event.preventDefault();
+    dispatch(register(name, email, password, passwordCode))
+      .then(() => {
+        setLoading(false);
+        // TODO: Push to the login page
+      })
+      .catch(() => {
+        // TODO: Handle the error thrown
+      });
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -39,7 +64,7 @@ export const Register = (props) => {
         <Typography component="h1" variant="h5">
           <Box fontWeight="fontWeightBold">Hello 👋 Sign Up Below</Box>
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleRegister}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -50,6 +75,8 @@ export const Register = (props) => {
             name="name"
             autoComplete="name"
             autoFocus
+            value={name}
+            onInput={(e) => setName(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -61,6 +88,8 @@ export const Register = (props) => {
             name="email"
             autoComplete="email"
             autoFocus
+            value={email}
+            onInput={(e) => setEmail(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -72,6 +101,8 @@ export const Register = (props) => {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={password}
+            onInput={(e) => setPassword(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -84,6 +115,8 @@ export const Register = (props) => {
             type="password"
             id="forgot-password"
             autoComplete="current-password"
+            value={passwordCode}
+            onInput={(e) => setPasswordCode(e.target.value)}
           />
           <Button
             type="submit"
@@ -106,3 +139,13 @@ export const Register = (props) => {
     </Container>
   );
 };
+
+function mapStateToProps(state) {
+  const { isLoggedIn } = state.auth;
+  const { message } = state.message;
+  return {
+    isLoggedIn,
+    message,
+  };
+}
+export default connect(mapStateToProps)(Register);
