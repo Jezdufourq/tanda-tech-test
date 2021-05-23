@@ -21,7 +21,8 @@ class Api::V1::OrganisationsController < ApplicationController
         @organisation = Organisation.new(new_organisation_params)
         if @organisation.valid?
             @organisation.save
-            render json: @organisation, status: 200
+            @organisations = Organisation.all
+            render json: @organisations, status: 200
         else
             render json: { error: 'failed to create the organisation' }, status: :not_acceptable
         end

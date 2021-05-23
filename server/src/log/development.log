@@ -6566,3 +6566,1838 @@ Processing by Api::V1::AuthController#create as HTML
 Completed 200 OK in 207ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 845)
 
 
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 14:27:00 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 200 OK in 240ms (Views: 0.8ms | ActiveRecord: 0.8ms | Allocations: 7217)
+
+
+Started GET "/api/v1/organisation_user" for ::1 at 2021-05-23 14:34:15 +1000
+Processing by Api::V1::OrganisationUserController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisationUser Load (1.6ms)[0m  [1m[34mSELECT "organisation_users".* FROM "organisation_users" WHERE (user_id = 2)[0m
+  ↳ app/controllers/api/v1/organisation_user_controller.rb:9:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.21ms)
+Completed 200 OK in 47ms (Views: 1.7ms | ActiveRecord: 2.6ms | Allocations: 3687)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 14:34:24 +1000
+Processing by Api::V1::OrganisationsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.6ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.06ms)
+Completed 200 OK in 7ms (Views: 1.4ms | ActiveRecord: 0.7ms | Allocations: 3028)
+
+
+Started POST "//api/v1/organisations" for ::1 at 2021-05-23 14:34:30 +1000
+Processing by Api::V1::OrganisationsController#create as */*
+  Parameters: {"hourly_rate"=>10, "name"=>"Test Orgfsfsa", "organisation"=>{"name"=>"Test Orgfsfsa", "hourly_rate"=>10}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+[31mUnpermitted parameter: :organisation[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:23:in `create'
+  [1m[36mOrganisation Create (2.2ms)[0m  [1m[32mINSERT INTO "organisations" ("name", "hourly_rate", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Test Orgfsfsa"], ["hourly_rate", 10], ["created_at", "2021-05-23 04:34:30.243522"], ["updated_at", "2021-05-23 04:34:30.243522"]]
+  ↳ app/controllers/api/v1/organisations_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:23:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Organisation (0.22ms)
+Completed 200 OK in 17ms (Views: 2.6ms | ActiveRecord: 3.7ms | Allocations: 5355)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 14:34:33 +1000
+Processing by Api::V1::OrganisationsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.93ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.2ms | Allocations: 1652)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 14:42:16 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 547)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 14:42:18 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 14:57:35 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 2ms (Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 14:59:19 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 14:59:37 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 15:03:10 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 15:08:18 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 15:09:06 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 15:09:10 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 15:09:15 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 15:09:29 +1000
+Processing by Api::V1::OrganisationsController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.15ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.5ms | Allocations: 1931)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 15:11:55 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.29ms)
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 0.4ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 15:11:57 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.27ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 15:13:48 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.3ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.24ms)
+Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 0.5ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 17:52:23 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.3ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (1.1ms)
+Completed 200 OK in 22ms (Views: 8.4ms | ActiveRecord: 1.6ms | Allocations: 1892)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 17:52:25 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.16ms)
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 1409)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 17:52:45 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.14ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 17:52:53 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:05:46 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.24ms)
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 0.9ms | Allocations: 1892)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:27:13 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.22ms)
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 0.8ms | Allocations: 1892)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:27:44 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.26ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:27:54 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.14ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:27:56 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.15ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.2ms | Allocations: 1410)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:28:02 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.2ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.3ms | Allocations: 1409)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:28:07 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.22ms)
+Completed 200 OK in 7ms (Views: 2.9ms | ActiveRecord: 0.4ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:29:55 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.14ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:29:58 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.52ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:29:58 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.22ms)
+Completed 200 OK in 6ms (Views: 2.7ms | ActiveRecord: 0.7ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:31:41 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.16ms)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:31:43 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.33ms)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:32:31 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.14ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 1409)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:32:31 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.15ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:32:51 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.14ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:32:53 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.15ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.2ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:32:54 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.41ms)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:34:08 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.3ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.12ms)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.5ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:34:13 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.25ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.2ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:34:59 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.12ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:35:00 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.15ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:36:13 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.22ms)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.4ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:36:14 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.14ms)
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 1411)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:36:52 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.23ms)
+Completed 200 OK in 6ms (Views: 2.9ms | ActiveRecord: 0.5ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 18:36:54 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.18ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.4ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:08:46 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.21ms)
+Completed 200 OK in 8ms (Views: 3.0ms | ActiveRecord: 1.0ms | Allocations: 1892)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:10:23 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.22ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.4ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:10:28 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.15ms)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:10:29 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.22ms)
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 0.4ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:10:53 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.12ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.2ms | Allocations: 1409)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:10:55 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.16ms)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:13:46 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.2ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.2ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:14:40 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.13ms)
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 1409)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:15:07 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.21ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:15:08 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.13ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:18:12 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.13ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.2ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:18:14 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.15ms)
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.4ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:19:44 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.2ms)
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.8ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:19:47 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.13ms)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:20:08 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.21ms)
+Completed 200 OK in 7ms (Views: 4.7ms | ActiveRecord: 0.4ms | Allocations: 1410)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:20:10 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.2ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 1409)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:20:16 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.13ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:20:17 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.35ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:20:58 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.2ms)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.4ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:20:58 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.14ms)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:20:59 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.2ms)
+Completed 200 OK in 9ms (Views: 5.3ms | ActiveRecord: 0.4ms | Allocations: 1409)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:24:56 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.13ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.2ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:25:40 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.23ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms | Allocations: 1409)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:25:51 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.26ms)
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.4ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:26:01 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.16ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:26:03 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.25ms)
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 0.4ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:26:25 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.14ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.2ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:26:27 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 04:34:30.243522000 +0000", updated_at: "2021-05-23 04:34:30.243522000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.26ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.3ms | Allocations: 1408)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:27:03 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:27:07 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:27:25 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:28:17 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:28:19 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:28:22 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:53:07 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 1ms (Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 19:53:23 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+Completed 500 Internal Server Error in 3ms (Allocations: 523)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/application_controller.rb:32:in `logged_in?'
+app/controllers/application_controller.rb:19:in `authorized'
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateOrganisations (20210517000549)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "organisations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "hourly_rate" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "password_reset_answer" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "shifts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "start_time" datetime, "end_time" datetime, "break_length" integer, "hours_worked" float, "shift_cost" float, "user_id" integer, "organisation_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_b1a30da2b8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_6191fd9bf7"
+FOREIGN KEY ("organisation_id")
+  REFERENCES "organisations" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_shifts_on_user_id" ON "shifts" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_shifts_on_organisation_id" ON "shifts" ("organisation_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "organisation_users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "organisation_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c09d46ca83"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_edd3c9a28c"
+FOREIGN KEY ("organisation_id")
+  REFERENCES "organisations" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_organisation_users_on_user_id" ON "organisation_users" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_organisation_users_on_organisation_id" ON "organisation_users" ("organisation_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210517000549"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-23 10:13:02.803811"], ["updated_at", "2021-05-23 10:13:02.803811"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/sign-up" for ::1 at 2021-05-23 20:13:40 +1000
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as HTML
+  Parameters: {"name"=>"Jez", "email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "password_reset_answer"=>"[FILTERED]", "user"=>{"name"=>"Jez", "email"=>"jezdufourq@gmail.com", "password_reset_answer"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:21:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/users_controller.rb:22:in `create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "password_reset_answer", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Jez"], ["email", "jezdufourq@gmail.com"], ["password_digest", "$2a$12$vgX6yoXyjZVvO462IUG/b.IW1LaMl0u.gYqfIqUeeGRkSpazbthcS"], ["password_reset_answer", "1234"], ["created_at", "2021-05-23 10:13:40.956382"], ["updated_at", "2021-05-23 10:13:40.956382"]]
+  ↳ app/controllers/api/v1/users_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/users_controller.rb:22:in `create'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.83ms)
+Completed 200 OK in 243ms (Views: 11.9ms | ActiveRecord: 2.0ms | Allocations: 10647)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 20:13:51 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 212ms (Views: 2.0ms | ActiveRecord: 0.2ms | Allocations: 1780)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 20:13:57 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 200 OK in 205ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 1397)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:14:14 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 6ms (Views: 1.4ms | ActiveRecord: 0.3ms | Allocations: 3304)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:14:15 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.17ms)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.4ms | Allocations: 1309)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:23:36 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.23ms)
+Completed 200 OK in 10ms (Views: 2.5ms | ActiveRecord: 1.4ms | Allocations: 1753)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:23:40 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.5ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.16ms)
+Completed 200 OK in 6ms (Views: 2.8ms | ActiveRecord: 0.6ms | Allocations: 1230)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:23:46 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.1ms)
+Completed 200 OK in 5ms (Views: 2.0ms | ActiveRecord: 0.4ms | Allocations: 1228)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:23:48 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 200 OK in 6ms (Views: 2.7ms | ActiveRecord: 0.4ms | Allocations: 1229)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:24:37 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.09ms)
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.3ms | Allocations: 1228)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:24:39 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.12ms)
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 0.5ms | Allocations: 1228)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:25:07 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.3ms | Allocations: 1228)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:27:55 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 1228)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:27:57 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.18ms)
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.4ms | Allocations: 1231)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:28:10 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.06ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.4ms | Allocations: 1228)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:28:23 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.2ms | Allocations: 1228)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:28:31 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.11ms)
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 0.5ms | Allocations: 1228)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:28:45 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.12ms)
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.3ms | Allocations: 1228)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 20:34:14 +1000
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 200 OK in 241ms (Views: 0.8ms | ActiveRecord: 1.1ms | Allocations: 7714)
+
+
+Started POST "//api/v1/organisations" for ::1 at 2021-05-23 20:34:23 +1000
+Processing by Api::V1::OrganisationsController#create as */*
+  Parameters: {"hourly_rate"=>10, "name"=>"Test Orgfsfsa", "organisation"=>{"name"=>"Test Orgfsfsa", "hourly_rate"=>10}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+[31mUnpermitted parameter: :organisation[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:23:in `create'
+  [1m[36mOrganisation Create (0.8ms)[0m  [1m[32mINSERT INTO "organisations" ("name", "hourly_rate", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Test Orgfsfsa"], ["hourly_rate", 10], ["created_at", "2021-05-23 10:34:23.450623"], ["updated_at", "2021-05-23 10:34:23.450623"]]
+  ↳ app/controllers/api/v1/organisations_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:23:in `create'
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 3.9ms | Allocations: 6728)
+
+
+  
+NameError (uninitialized constant Api::V1::OrganisationsController::Organisatin):
+  
+app/controllers/api/v1/organisations_controller.rb:24:in `create'
+Started POST "//api/v1/organisations" for ::1 at 2021-05-23 20:34:31 +1000
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::OrganisationsController#create as */*
+  Parameters: {"hourly_rate"=>10, "name"=>"Test Orgfsfsa", "organisation"=>{"name"=>"Test Orgfsfsa", "hourly_rate"=>10}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+[31mUnpermitted parameter: :organisation[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:23:in `create'
+  [1m[36mOrganisation Create (0.4ms)[0m  [1m[32mINSERT INTO "organisations" ("name", "hourly_rate", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Test Orgfsfsa"], ["hourly_rate", 10], ["created_at", "2021-05-23 10:34:31.483786"], ["updated_at", "2021-05-23 10:34:31.483786"]]
+  ↳ app/controllers/api/v1/organisations_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:23:in `create'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:25:in `create'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.29ms)
+Completed 200 OK in 21ms (Views: 3.4ms | ActiveRecord: 2.8ms | Allocations: 11809)
+
+
+Started POST "//api/v1/organisations" for ::1 at 2021-05-23 20:34:35 +1000
+Processing by Api::V1::OrganisationsController#create as */*
+  Parameters: {"hourly_rate"=>10, "name"=>"Test Orgfdsaffsfsa", "organisation"=>{"name"=>"Test Orgfdsaffsfsa", "hourly_rate"=>10}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+[31mUnpermitted parameter: :organisation[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:23:in `create'
+  [1m[36mOrganisation Create (0.4ms)[0m  [1m[32mINSERT INTO "organisations" ("name", "hourly_rate", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Test Orgfdsaffsfsa"], ["hourly_rate", 10], ["created_at", "2021-05-23 10:34:35.133439"], ["updated_at", "2021-05-23 10:34:35.133439"]]
+  ↳ app/controllers/api/v1/organisations_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:23:in `create'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:25:in `create'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.33ms)
+Completed 200 OK in 13ms (Views: 2.0ms | ActiveRecord: 1.7ms | Allocations: 3597)
+
+
+Started POST "//api/v1/organisations" for ::1 at 2021-05-23 20:34:38 +1000
+Processing by Api::V1::OrganisationsController#create as */*
+  Parameters: {"hourly_rate"=>10, "name"=>"Test Ofdasfdsrgfdsaffsfsa", "organisation"=>{"name"=>"Test Ofdasfdsrgfdsaffsfsa", "hourly_rate"=>10}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+[31mUnpermitted parameter: :organisation[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:23:in `create'
+  [1m[36mOrganisation Create (0.5ms)[0m  [1m[32mINSERT INTO "organisations" ("name", "hourly_rate", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Test Ofdasfdsrgfdsaffsfsa"], ["hourly_rate", 10], ["created_at", "2021-05-23 10:34:38.318481"], ["updated_at", "2021-05-23 10:34:38.318481"]]
+  ↳ app/controllers/api/v1/organisations_controller.rb:23:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:23:in `create'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:25:in `create'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.77ms)
+Completed 200 OK in 11ms (Views: 3.1ms | ActiveRecord: 1.9ms | Allocations: 3498)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:35:18 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.75ms)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.3ms | Allocations: 1736)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:36:20 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.56ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:39:31 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.65ms)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.4ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:39:31 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.59ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:39:55 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.42ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.3ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:40:03 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.47ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.3ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:42:23 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.42ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:42:27 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.42ms)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 1735)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:44:59 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.45ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:45:50 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.42ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:45:57 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.75ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.2ms | Allocations: 1736)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:47:04 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.46ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.3ms | Allocations: 1735)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:47:41 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.42ms)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:49:11 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.98ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.2ms | Allocations: 1735)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:49:23 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.4ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.86ms)
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.5ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:50:25 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.84ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:50:49 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.6ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:50:51 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.42ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.3ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:51:06 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.41ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:51:16 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.36ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:51:47 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.87ms)
+Completed 200 OK in 9ms (Views: 5.5ms | ActiveRecord: 0.6ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:52:21 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.48ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.3ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:52:28 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.55ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.3ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:52:40 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (1.18ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.4ms | Allocations: 1735)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:52:43 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.6ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.53ms)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.8ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:53:58 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.43ms)
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.3ms | Allocations: 1736)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:54:28 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (1.22ms)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.3ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:54:52 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.48ms)
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 0.4ms | Allocations: 1735)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:54:54 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.43ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:54:57 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.46ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 1735)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:54:58 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.42ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:55:03 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.42ms)
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:55:05 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.45ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:55:06 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.43ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:55:25 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.81ms)
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 0.5ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:55:30 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.58ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:55:31 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (1.17ms)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.3ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:55:32 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.4ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:55:33 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.4ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.2ms | Allocations: 1735)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:55:33 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.43ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.3ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:55:33 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (4.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (4.75ms)
+Completed 200 OK in 21ms (Views: 14.5ms | ActiveRecord: 5.0ms | Allocations: 1735)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:55:33 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.7ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 1735)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:55:39 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.36ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:55:39 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.36ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+
+Started PUT "/api/v1/organisations" for ::1 at 2021-05-23 20:55:42 +1000
+  
+ActionController::RoutingError (No route matches [PUT] "/api/v1/organisations"):
+  
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:56:30 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.2ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.93ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.4ms | Allocations: 1975)
+
+
+Started GET "/api/v1/organisations" for ::1 at 2021-05-23 20:57:07 +1000
+Processing by Api::V1::OrganisationsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:29:in `current_user'
+  [1m[36mOrganisation Load (0.1ms)[0m  [1m[34mSELECT "organisations".* FROM "organisations"[0m
+  ↳ app/controllers/api/v1/organisations_controller.rb:7:in `index'
+No serializer found for resource: #<Organisation id: 1, name: "Test Orgfsfsa", hourly_rate: 10, created_at: "2021-05-23 10:34:23.450623000 +0000", updated_at: "2021-05-23 10:34:23.450623000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Organisation::ActiveRecord_Relation (0.37ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms | Allocations: 1734)
+
+

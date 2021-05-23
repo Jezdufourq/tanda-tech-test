@@ -11,6 +11,7 @@ import Box from "@material-ui/core/Box";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { resetPassword } from "../actions/auth";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -40,17 +41,17 @@ export const ForgotPassword = (props) => {
   const [newPassword, setNewPassword] = useState("");
   const [email, setEmail] = useState("");
   const [passwordCode, setPasswordCode] = useState("");
-  const dispatch = useDispatch();
 
-  // TODO: when mounted check if they are already logged in then redirect
+  // Redux hooks
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   function handleSubmit(event) {
     setLoading(true);
     event.preventDefault();
     dispatch(resetPassword(email, passwordCode, newPassword))
       .then(() => {
-        // history.push("/home");
-        // window.location.reload();
+        history.push("/");
       })
       .catch(() => {
         setAlert(true);

@@ -12,6 +12,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { register } from "../actions/auth";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -42,7 +43,9 @@ export const Register = (props) => {
 
   const [loading, setLoading] = useState(false);
 
+  // redux hooks
   const dispatch = useDispatch();
+  const history = useHistory();
 
   function handleRegister(event) {
     setLoading(true);
@@ -50,7 +53,7 @@ export const Register = (props) => {
     dispatch(register(name, email, password, passwordCode))
       .then(() => {
         setLoading(false);
-        // TODO: Push to the login page
+        history.push("/");
       })
       .catch(() => {
         // TODO: Handle the error thrown

@@ -1,3 +1,4 @@
+// Authentication
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -6,5 +7,14 @@ export const LOGOUT = "LOGOUT";
 export const RESET_PASSWORD_SUCCESS = "RESET_PASSWORD_SUCCESS";
 export const RESET_PASSWORD_FAIL = "RESET_PASSWORD_FAIL";
 
+// Error handling
 export const SET_MESSAGE = "SET_MESSAGE";
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
+
+// Shifts
+
+// Organisations
+export const GET_ORGANISATIONS_SUCCESS = "GET_ORGANISATIONS_SUCCESS";
+export const CREATE_ORGANISATION_SUCCESS = "CREATE_ORGANISATION_SUCCESS";
+
+// User

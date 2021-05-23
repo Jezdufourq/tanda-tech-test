@@ -9,6 +9,8 @@ import EditIcon from "@material-ui/icons/Edit";
 import AddIcon from "@material-ui/icons/Add";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
+import { useEffect } from "react";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -19,36 +21,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function generate(element) {
-  return [0, 1, 2].map((value) =>
-    React.cloneElement(element, {
-      key: value,
-    })
-  );
-}
-
-export default function InteractiveList(props) {
+export default function UpdatableList(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <div className={classes.demo}>
         <List>
-          {generate(
-            <ListItem button>
-              <ListItemText primary="Organisation" />
-              <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="edit">
-                  <EditIcon />
-                </IconButton>
-                {props.add ? (
+          {props.items.map((v, i) => {
+            return (
+              <ListItem button>
+                <ListItemText primary={v.name} />
+                <ListItemSecondaryAction>
                   <IconButton edge="end" aria-label="edit">
-                    <AddIcon />
+                    <EditIcon />
                   </IconButton>
-                ) : null}
-              </ListItemSecondaryAction>
-            </ListItem>
-          )}
+                  {props.add ? (
+                    <IconButton edge="end" aria-label="edit">
+                      <AddIcon />
+                    </IconButton>
+                  ) : null}
+                </ListItemSecondaryAction>
+              </ListItem>
+            );
+          })}
         </List>
       </div>
     </div>

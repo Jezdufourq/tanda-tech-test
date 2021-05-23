@@ -32,7 +32,7 @@ export default function Auth(state = initialState, action) {
       return {
         ...state,
         isLoggedIn: true,
-        user: JSON.stringify(payload.user),
+        user: payload.user,
       };
     case LOGIN_FAIL:
       return {
