@@ -1,7 +1,7 @@
 import ShiftsService from "../services/shifts.service";
 import { GET_CURRENT_SHIFTS, CREATE_SHIFT, SET_MESSAGE } from "./types";
 
-export const shifts = (organisationId) => (dispatch) => {
+export const getCurrentShiftsOnOrgId = (organisationId) => (dispatch) => {
   return ShiftsService.getCurrentShiftsOnOrgId(organisationId).then(
     (response) => {
       dispatch({
@@ -28,3 +28,7 @@ export const shifts = (organisationId) => (dispatch) => {
     }
   );
 };
+
+export const createShift = (startTime, endTime, breakLength, userId, orgId) => (
+  dispatch
+) => {};

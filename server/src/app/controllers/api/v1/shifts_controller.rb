@@ -5,7 +5,9 @@ class Api::V1::ShiftsController < ApplicationController
         @shift = Shift.new(new_shift_params)
         if @shift.valid?
             @shift.save
-            render json: @shift, status: 200
+            @organisation = Organisation.find(new_shift_params[:organisation_id])
+            shifts = Shift.where('organisation_id = ?', @organisation.id)
+            render json: shifts, status: 200
         else
             render json: { error: 'failed to create the shift' }, status: :not_acceptable
         end
@@ -17,7 +19,9 @@ class Api::V1::ShiftsController < ApplicationController
             start_time: new_shift_params[:start_time],
             end_time: new_shift_params[:end_time],
             break_length: new_shift_params[:break_length])
-        render json: shift, status: 200
+        @organisation = Organisation.find(new_shift_params[:organisation_id])
+        shifts = Shift.where('organisation_id = ?', @organisation.id)
+        render json: shifts, status: 200
     end
 
     #  caveat

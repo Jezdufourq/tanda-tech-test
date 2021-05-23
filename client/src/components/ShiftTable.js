@@ -7,6 +7,9 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+const moment = require("moment");
 
 const useStyles = makeStyles({
   table: {
@@ -14,22 +17,9 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
-
-export default function ShiftTable() {
+export default function ShiftTable(props) {
   const classes = useStyles();
+  const currentShiftData = useSelector((state) => state.shifts.currentShifts);
 
   return (
     <TableContainer component={Paper}>
@@ -37,7 +27,8 @@ export default function ShiftTable() {
         <TableHead>
           <TableRow>
             <TableCell>Employee Name</TableCell>
-            <TableCell align="right">Shift Date</TableCell>
+            <TableCell align="right">Shift Start Date</TableCell>
+            <TableCell align="right">Shift End Date</TableCell>
             <TableCell align="right">Start Time</TableCell>
             <TableCell align="right">Finish Time</TableCell>
             <TableCell align="right">Break Length(m)</TableCell>
@@ -46,17 +37,26 @@ export default function ShiftTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {currentShiftData.map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.user_id}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">
+                {moment(row.start_time).format("DD/MM/YYYY")}
+              </TableCell>
+              <TableCell align="right">
+                {moment(row.end_time).format("DD/MM/YYYY")}
+              </TableCell>
+              <TableCell align="right">
+                {moment(row.start_time).format("h:mm A")}
+              </TableCell>
+              <TableCell align="right">
+                {moment(row.end_time).format("h:mm A")}
+              </TableCell>
+              <TableCell align="right">{row.break_length}</TableCell>
+              <TableCell align="right">{row.hours_worked}</TableCell>
+              <TableCell align="right">{row.shift_cost}</TableCell>
             </TableRow>
           ))}
         </TableBody>
