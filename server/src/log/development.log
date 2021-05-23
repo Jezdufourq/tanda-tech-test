@@ -6251,3 +6251,318 @@ Processing by Api::V1::AuthController#create as */*
 Completed 200 OK in 225ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 901)
 
 
+Started POST "/api/v1/authsign-in" for ::1 at 2021-05-23 12:14:21 +1000
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/authsign-in"):
+  
+Started POST "//api/v1/sign-up" for ::1 at 2021-05-23 12:15:02 +1000
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"email"=>"jezdufourq@gmail.com", "name"=>"jez dufourq1", "password"=>"[FILTERED]", "password_reset_answer"=>"[FILTERED]", "user"=>{"name"=>"jez dufourq1", "email"=>"jezdufourq@gmail.com", "password_reset_answer"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/api/v1/users_controller.rb:21:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:21:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.66ms)
+Completed 406 Not Acceptable in 237ms (Views: 1.3ms | ActiveRecord: 4.8ms | Allocations: 1542)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 12:15:11 +1000
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.6ms)
+Completed 200 OK in 227ms (Views: 1.5ms | ActiveRecord: 0.3ms | Allocations: 870)
+
+
+Started POST "/api/v1/auth/sign-in" for ::1 at 2021-05-23 12:15:19 +1000
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/auth/sign-in"):
+  
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 12:15:44 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+No template found for Api::V1::AuthController#create, rendering head :no_content
+Completed 204 No Content in 244ms (ActiveRecord: 0.1ms | Allocations: 615)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 12:16:02 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+No template found for Api::V1::AuthController#create, rendering head :no_content
+Completed 204 No Content in 236ms (ActiveRecord: 0.1ms | Allocations: 616)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 12:16:36 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+No template found for Api::V1::AuthController#create, rendering head :no_content
+Completed 204 No Content in 231ms (ActiveRecord: 0.1ms | Allocations: 614)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 12:17:05 +1000
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 200 OK in 210ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 850)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 12:18:29 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+No template found for Api::V1::AuthController#create, rendering head :no_content
+Completed 204 No Content in 247ms (ActiveRecord: 1.9ms | Allocations: 6805)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 12:19:57 +1000
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 220ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 1539)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 12:20:36 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+No template found for Api::V1::AuthController#create, rendering head :no_content
+Completed 204 No Content in 243ms (ActiveRecord: 0.2ms | Allocations: 702)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 12:26:04 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 222ms (Views: 0.6ms | ActiveRecord: 1.4ms | Allocations: 7133)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 12:26:20 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 246ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 1318)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 12:46:05 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 227ms (Views: 0.4ms | ActiveRecord: 1.2ms | Allocations: 1300)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 12:48:31 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 238ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 719)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 12:49:10 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"fdsfsdfsad@fadsfsdf.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"fdsfsdfsad@fadsfsdf.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "fdsfsdfsad@fadsfsdf.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.1ms | Allocations: 1115)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/api/v1/auth_controller.rb:15:in `create'
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 12:54:16 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"fddsfsd@fdadfdsa.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"fddsfsd@fdadfdsa.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "fddsfsd@fdadfdsa.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms | Allocations: 1171)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:23:in `token'
+app/controllers/application_controller.rb:12:in `decoded_token'
+app/controllers/application_controller.rb:26:in `user_id'
+app/controllers/application_controller.rb:29:in `current_user'
+app/controllers/api/v1/auth_controller.rb:15:in `create'
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 12:56:30 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 238ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 921)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 12:58:03 +1000
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 222ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 725)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 13:02:00 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 235ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 719)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 13:02:23 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 230ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 845)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 13:03:01 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 200 OK in 206ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 845)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 13:05:32 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 200 OK in 221ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 845)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 13:06:58 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 218ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 845)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 13:08:35 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 200 OK in 237ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 845)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 13:15:17 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 223ms (Views: 0.6ms | ActiveRecord: 0.9ms | Allocations: 7259)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 13:20:14 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 200 OK in 213ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 946)
+
+
+Started POST "/api/v1/sign-in" for ::1 at 2021-05-23 13:21:41 +1000
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"jezdufourq@gmail.com", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :auth[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jezdufourq@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:10:in `create'
+[31mUnpermitted parameter: :auth[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 200 OK in 207ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 845)
+
+

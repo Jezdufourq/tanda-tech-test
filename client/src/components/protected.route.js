@@ -1,11 +1,10 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-export const ProtectedRoute = ({
-  component: Component,
-  isLoggedIn,
-  ...rest
-}) => {
+export const ProtectedRoute = (
+  { component: Component, ...rest },
+  isLoggedIn
+) => {
   return (
     <Route
       {...rest}

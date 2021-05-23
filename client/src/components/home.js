@@ -42,14 +42,6 @@ export const Home = (props) => {
   return (
     <Container component="main" maxWidth="sm">
       <CssBaseline />
-      <div className={classes.heading}>
-        <Typography component="h1" variant="h5">
-          <Box fontWeight="fontWeightBold">Welcome Back, {name} 👋</Box>
-        </Typography>
-        <IconButton edge="end" aria-label="edit">
-          <ExitToAppIcon />
-        </IconButton>
-      </div>
       <div className={classes.text}>
         <Typography component="h1" variant="h5">
           <Box fontWeight="fontWeightBold">Your Orgnisations</Box>

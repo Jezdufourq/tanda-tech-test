@@ -7,11 +7,13 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
-import { Box } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
+import Alert from "@material-ui/lab/Alert";
 
 import { useState } from "react";
 import { connect } from "react-redux";
 import { login } from "../actions/auth";
+import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -33,88 +35,118 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Login = (props) => {
+export const Login = ({ history }, message, isLoggedIn) => {
   const classes = useStyles();
   const [loading, setLoading] = useState(false);
-  const [username, setUsername] = useState("");
+  const [alert, setAlert] = useState(false);
   const [password, setPassword] = useState("");
-  const { dispatch, history } = props;
-  function handleLogin(e) {
-    e.preventDefault();
+  const [email, setEmail] = useState("");
+  const dispatch = useDispatch();
 
-    this.loading = true;
+  // TODO: when mounted check if they are already logged in then redirect
 
-    dispatch(login(this.state.username, this.state.password))
+  function handleSubmit(event) {
+    setLoading(true);
+    event.preventDefault();
+    console.log("Email: ", email, "Password: ", password);
+    dispatch(login(email, password))
       .then(() => {
-        history.push("/home");
-        window.location.reload();
+        // history.push("/home");
+        // window.location.reload();
       })
       .catch(() => {
-        this.loading = false;
+        setAlert(true);
+        setLoading(false);
       });
   }
 
   return (
     <Container component="main" maxWidth="xs">
+      {alert ? (
+        <Alert
+          severity="error"
+          onClose={() => {
+            setAlert(false);
+          }}
+        >
+          {message}
+        </Alert>
+      ) : null}
       <CssBaseline />
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          <Box fontWeight="fontWeightBold"> Welcome Back!👋 </Box>
-        </Typography>
-        <form className={classes.form} noValidate onSubmit={handleLogin}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign In
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link to="/forgot-password" variant="body2">
-                Forgot password?
-              </Link>
+      {isLoggedIn ? (
+        <div className={classes.paper}>
+          <Typography component="h1" variant="h5">
+            <Box fontWeight="fontWeightBold">
+              Please log out if you would like to go to login page
+            </Box>
+          </Typography>
+        </div>
+      ) : (
+        <div className={classes.paper}>
+          <Typography component="h1" variant="h5">
+            <Box fontWeight="fontWeightBold"> Lets get you signed in</Box>
+          </Typography>
+          <form className={classes.form} onSubmit={handleSubmit}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              value={email}
+              onInput={(e) => setEmail(e.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              value={password}
+              onInput={(e) => setPassword(e.target.value)}
+            />
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              type="submit"
+              className={classes.submit}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link to="/forgot-password" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link to="/register" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
             </Grid>
-            <Grid item>
-              <Link to="/register" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
+          </form>
+        </div>
+      )}
     </Container>
   );
 };
 
 function mapStateToProps(state) {
   const { isLoggedIn } = state.auth;
+  const { message } = state.message;
   return {
     isLoggedIn,
+    message,
   };
 }
 export default connect(mapStateToProps)(Login);

@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import IconButton from "@material-ui/core/IconButton";
 import {
   AppBar,
   Toolbar,
@@ -24,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
   },
   headerStyle: {
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     boxShadow: "none",
   },
 }));
@@ -38,10 +40,13 @@ function Header({ user, isLoggedIn }) {
           <Typography variant="h5">
             {isLoggedIn ? (
               <Box fontWeight="fontWeightBold" className={classes.text}>
-                You are Signed In As {user}
+                Welcome Back {user.name} 👋
               </Box>
             ) : null}
           </Typography>
+          <IconButton edge="end" aria-label="edit">
+            <ExitToAppIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
     </div>

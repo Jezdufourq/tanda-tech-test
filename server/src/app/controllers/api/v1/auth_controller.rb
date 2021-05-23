@@ -10,8 +10,9 @@ class Api::V1::AuthController < ApplicationController
         @user = User.find_by_email(user_login_params[:email])
         if @user && @user.authenticate(user_login_params[:password])
             token = issue_token(@user)
-            render json: {user: UserSerializer.new(@user), jwt: token}
+            render json: {user: UserSerializer.new(@user), accessToken: token}, status: 200
         else
+            render json: {error: 'You are not authenticated'}, status: 401
         end
     end
 
