@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import UpdatableList from "./UpdatableList";
+import OrganisationList from "./OrganisationList";
 import {
   Box,
   Button,
@@ -15,7 +16,11 @@ import {
 } from "@material-ui/core";
 
 import { useDispatch, useSelector } from "react-redux";
-import { organisations, createOrganisation } from "../actions/organisations";
+import {
+  organisations,
+  createOrganisation,
+  myOrganisations,
+} from "../actions/organisations";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -52,11 +57,12 @@ export const Home = (props) => {
   const [orgHourlyRate, setOrgHourlyRate] = React.useState("");
   const dispatch = useDispatch();
   const orgs = useSelector((state) => state.organisations.currentOrgs);
+  const myOrgs = useSelector((state) => state.organisations.userOrgs);
   const classes = useStyles();
 
   useEffect(() => {
     dispatch(organisations());
-    console.log(orgs);
+    dispatch(myOrganisations());
   }, []);
 
   function createOrg() {
@@ -80,7 +86,9 @@ export const Home = (props) => {
           <Box fontWeight="fontWeightBold">Your Organisations</Box>
         </Typography>
       </div>
-      <div>{/* <UpdatableList /> */}</div>
+      <div>
+        <OrganisationList items={myOrgs} />
+      </div>
       <div className={classes.text}>
         <Typography component="h1" variant="h5">
           <Box fontWeight="fontWeightBold">Available Organisations</Box>
@@ -92,7 +100,7 @@ export const Home = (props) => {
             <Box>No current organisations</Box>
           </Typography>
         ) : (
-          <UpdatableList add={true} items={orgs} />
+          <UpdatableList items={orgs} />
         )}
       </div>
       <Button

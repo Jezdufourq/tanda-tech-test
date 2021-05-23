@@ -9,7 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Box from "@material-ui/core/Box";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Table from "./table";
-
+import { useDispatch, useSelector } from "react-redux";
 const useStyles = makeStyles((theme) => ({
   heading: {
     marginTop: theme.spacing(8),
@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
 
 export const Shifts = (props) => {
   const classes = useStyles();
-  const [orgName, setOrgName] = useState("Organisation1");
+  const currentOrg = useSelector((state) => state.);
+
   return (
     <div>
       <Container component="main" maxWidth="sm">

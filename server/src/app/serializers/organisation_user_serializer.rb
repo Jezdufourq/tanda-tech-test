@@ -1,3 +1,3 @@
 class OrganisationUserSerializer < ApplicationSerializer
-    attributes :user, :organisation
+    attributes :organisation
 end

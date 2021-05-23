@@ -7,6 +7,11 @@ class OrganisationsService {
       headers: authHeader(),
     });
   }
+  myOrganisations() {
+    return axios.get(API_URL + "user/organisation", {
+      headers: authHeader(),
+    });
+  }
   createOrganisation(name, hourlyRate) {
     return axios.post(
       API_URL + "organisations",
@@ -22,6 +27,18 @@ class OrganisationsService {
       {
         name: name,
         hourly_rate: hourlyRate,
+      },
+      {
+        headers: authHeader(),
+      }
+    );
+  }
+  joinOrganisation(orgId, userId) {
+    return axios.post(
+      API_URL + "user/join-organisation",
+      {
+        user_id: userId,
+        organisation_id: orgId,
       },
       {
         headers: authHeader(),

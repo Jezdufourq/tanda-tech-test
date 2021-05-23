@@ -15,10 +15,8 @@ import {
   DialogContent,
 } from "@material-ui/core";
 
-import { editOrganisation } from "../actions/organisations";
-
+import { editOrganisation, joinOrganisation } from "../actions/organisations";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,9 +35,11 @@ export default function UpdatableList(props) {
   const [orgId, setOrgId] = React.useState("");
   const [orgHourlyRate, setOrgHourlyRate] = React.useState("");
   const dispatch = useDispatch();
+  const userId = useSelector((state) => state.auth.user.id);
 
-  function joinOrg() {
-    //TODO: Implement
+  function joinOrg(id) {
+    setOrgId(id);
+    dispatch(joinOrganisation(orgId, userId));
   }
 
   function editOrg() {
@@ -68,11 +68,9 @@ export default function UpdatableList(props) {
                   <IconButton edge="end" aria-label="edit">
                     <EditIcon onClick={() => handleDialogOpen(v.id)} />
                   </IconButton>
-                  {props.add ? (
-                    <IconButton edge="end" aria-label="edit">
-                      <AddIcon />
-                    </IconButton>
-                  ) : null}
+                  <IconButton edge="end" aria-label="edit">
+                    <AddIcon onClick={() => joinOrg(v.id)} />
+                  </IconButton>
                 </ListItemSecondaryAction>
               </ListItem>
             );
