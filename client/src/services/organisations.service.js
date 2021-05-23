@@ -16,5 +16,18 @@ class OrganisationsService {
       }
     );
   }
+  editOrganisation(id, name, hourlyRate) {
+    return axios.put(
+      API_URL + "organisations",
+      {
+        id: id,
+        name: name,
+        hourly_rate: hourlyRate,
+      },
+      {
+        headers: authHeader(),
+      }
+    );
+  }
 }
 export default new OrganisationsService();

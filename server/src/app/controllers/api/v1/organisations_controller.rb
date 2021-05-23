@@ -3,14 +3,14 @@ class Api::V1::OrganisationsController < ApplicationController
 
     # GET all orgs
     def index
-        orgs = Organisation.all
-        render json: orgs, status: 200
+        @orgs = Organisation.all
+        render json: @orgs, status: 200
     end
 
     def show
-        org = Organisation.find_by(id: organisation_params[:id])
-        if org.valid?
-            render json: org, status: 200
+        @org = Organisation.find_by(id: organisation_params[:id])
+        if @org.valid?
+            render json: @org, status: 200
         else
             render json: { error: 'Could not find org with that id' }, status: 400
         end
@@ -29,12 +29,14 @@ class Api::V1::OrganisationsController < ApplicationController
     end
 
     # UPDATE
+    # PUT /organisations
     def update
-        organisation = Organisation.find_by(id: organisation_params[:id])
-        organisation.hourly_rate = new_organisation_params[:hourly_rate]
-        organisation.name = new_organisation_params[:name]
-        organisation.save
-        render json: organisation, status: 200
+        @organisation = Organisation.find_by(id: organisation_params[:id])
+        @organisation.hourly_rate = new_organisation_params[:hourly_rate]
+        @organisation.name = new_organisation_params[:name]
+        @organisation.save
+        @organisations = Organisation.all
+        render json: organisations, status: 200
     end
 
     # DELETE

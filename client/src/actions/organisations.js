@@ -59,3 +59,7 @@ export const createOrganisation = (name, hourlyRate) => (dispatch) => {
     }
   );
 };
+
+export const editOrganisation = (id, name, hourlyRate) => (dispatch) => {
+  return OrganisationsService;
+};

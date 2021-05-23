@@ -14,7 +14,7 @@ import {
   DialogContent,
 } from "@material-ui/core";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { organisations, createOrganisation } from "../actions/organisations";
 import { connect } from "react-redux";
 
@@ -51,16 +51,18 @@ export const Home = (props) => {
   const [openDialog, setOpenDialog] = React.useState(false);
   const [orgName, setOrgName] = React.useState("");
   const [orgHourlyRate, setOrgHourlyRate] = React.useState("");
-
-  const classes = useStyles();
   const dispatch = useDispatch();
+  const orgs = useSelector((state) => state.organisations.currentOrgs);
+  const classes = useStyles();
 
   useEffect(() => {
     dispatch(organisations());
-  });
+    console.log(orgs);
+  }, []);
 
   function createOrg() {
     dispatch(createOrganisation(orgName, orgHourlyRate));
+    setOpenDialog(false);
   }
 
   function handleDialogOpen() {
@@ -86,13 +88,13 @@ export const Home = (props) => {
         </Typography>
       </div>
       <div>
-        {/* {props.orgs.length === 0 ? (
+        {orgs.length === 0 ? (
           <Typography component="h1" variant="h5">
             <Box>No current organisations</Box>
           </Typography>
         ) : (
-          <UpdatableList add={true} items={props.orgs} />
-        )} */}
+          <UpdatableList add={true} items={orgs} />
+        )}
       </div>
       <Button
         type="submit"
@@ -145,9 +147,4 @@ export const Home = (props) => {
   );
 };
 
-function mapStateToProps(state) {
-  return {
-    orgs: state.organisations.currentOrgs,
-  };
-}
-export default connect(mapStateToProps)(Home);
+export default Home;
