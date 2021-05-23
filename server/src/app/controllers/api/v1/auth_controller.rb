@@ -30,9 +30,9 @@ class Api::V1::AuthController < ApplicationController
     # This uses a question based solution
     # PUT /reset_password
     def update
-        user = User.find_by(id: user_id)
-        if user.password_reset_answer == :password_reset_answer
-            @user.update(password: :updated_password)
+        user = User.find_by_email(params[:email])
+        if user.password_reset_answer == params[:password_reset_answer]
+            @user.update(password: params[:updated_password])
             @user.save
             render json: @user
         else

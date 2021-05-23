@@ -36,18 +36,18 @@ function Header({ user, isLoggedIn }) {
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.headerStyle}>
-        <Toolbar>
-          <Typography variant="h5">
-            {isLoggedIn ? (
+        {isLoggedIn ? (
+          <Toolbar>
+            <Typography variant="h5">
               <Box fontWeight="fontWeightBold" className={classes.text}>
                 Welcome Back {user.name} 👋
               </Box>
-            ) : null}
-          </Typography>
-          <IconButton edge="end" aria-label="edit">
-            <ExitToAppIcon />
-          </IconButton>
-        </Toolbar>
+            </Typography>
+            <IconButton edge="end" aria-label="edit">
+              <ExitToAppIcon />
+            </IconButton>
+          </Toolbar>
+        ) : null}
       </AppBar>
     </div>
   );

@@ -19,6 +19,14 @@ class AuthService {
       });
   }
 
+  resetPassword(email, passwordCode, newPassword) {
+    return axios.put(API_URL + "reset-password", {
+      email: email,
+      password_reset_answer: passwordCode,
+      updated_password: newPassword,
+    });
+  }
+
   logout() {
     localStorage.removeItem("user");
     localStorage.removeItem("accessToken");
