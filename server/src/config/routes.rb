@@ -20,8 +20,9 @@ Rails.application.routes.draw do
 
       # post org_users - joining an organisation
       # del org_users - removing yourself from organisation
-      resources :organisation_user
-
+      get '/users/organisation', to: 'organisation_user#show'
+      post '/users/organisation', to: 'organisation_user#create'
+      delete '/users/organisation', to: 'organisation_uder#destroy'
       # get shifts on org id
       # post shifts
       # put shifts

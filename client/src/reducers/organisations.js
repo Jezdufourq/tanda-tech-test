@@ -1,6 +1,7 @@
 import {
   GET_ORGANISATIONS_SUCCESS,
   CREATE_ORGANISATION_SUCCESS,
+  EDIT_ORGANISATION_SUCCESS,
 } from "../actions/types";
 
 const initialState = {
@@ -16,6 +17,11 @@ export default function Organisations(state = initialState, action) {
         currentOrgs: payload,
       };
     case CREATE_ORGANISATION_SUCCESS:
+      return {
+        ...state,
+        currentOrgs: payload,
+      };
+    case EDIT_ORGANISATION_SUCCESS:
       return {
         ...state,
         currentOrgs: payload,

@@ -15,6 +15,9 @@ import {
   DialogContent,
 } from "@material-ui/core";
 
+import { editOrganisation } from "../actions/organisations";
+
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,19 +34,22 @@ export default function UpdatableList(props) {
   const classes = useStyles();
   const [openDialog, setOpenDialog] = React.useState(false);
   const [orgName, setOrgName] = React.useState("");
+  const [orgId, setOrgId] = React.useState("");
   const [orgHourlyRate, setOrgHourlyRate] = React.useState("");
+  const dispatch = useDispatch();
 
   function joinOrg() {
     //TODO: Implement
   }
 
   function editOrg() {
-    // TODO: Implement
+    dispatch(editOrganisation(orgId, orgName, orgHourlyRate));
     setOpenDialog(false);
   }
 
-  function handleDialogOpen() {
+  function handleDialogOpen(id) {
     setOpenDialog(true);
+    setOrgId(id);
   }
 
   function handleDialogClose() {
@@ -60,7 +66,7 @@ export default function UpdatableList(props) {
                 <ListItemText primary={v.name} />
                 <ListItemSecondaryAction>
                   <IconButton edge="end" aria-label="edit">
-                    <EditIcon onClick={handleDialogOpen} />
+                    <EditIcon onClick={() => handleDialogOpen(v.id)} />
                   </IconButton>
                   {props.add ? (
                     <IconButton edge="end" aria-label="edit">
@@ -72,44 +78,44 @@ export default function UpdatableList(props) {
             );
           })}
         </List>
-        <Dialog
-          open={openDialog}
-          onClose={handleDialogClose}
-          aria-labelledby="form-dialog-title"
-          className={classes.dialog}
-        >
-          <DialogContent>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="orgName"
-              label="Organisation Name"
-              type="text"
-              value={orgName}
-              onInput={(e) => setOrgName(e.target.value)}
-              fullWidth
-            />
-            <TextField
-              autoFocus
-              margin="dense"
-              id="orgHourRate"
-              label="Organisation Hourly Rate"
-              type="number"
-              value={orgHourlyRate}
-              onInput={(e) => setOrgHourlyRate(e.target.value)}
-              fullWidth
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleDialogClose} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={editOrg} color="primary">
-              Create Org
-            </Button>
-          </DialogActions>
-        </Dialog>
       </div>
+      <Dialog
+        open={openDialog}
+        onClose={handleDialogClose}
+        aria-labelledby="form-dialog-title"
+        className={classes.dialog}
+      >
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="orgName"
+            label="Organisation Name"
+            type="text"
+            value={orgName}
+            onInput={(e) => setOrgName(e.target.value)}
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="orgHourRate"
+            label="Organisation Hourly Rate"
+            type="number"
+            value={orgHourlyRate}
+            onInput={(e) => setOrgHourlyRate(e.target.value)}
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDialogClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={editOrg} color="primary">
+            Edit Org
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

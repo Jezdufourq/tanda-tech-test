@@ -18,9 +18,8 @@ class OrganisationsService {
   }
   editOrganisation(id, name, hourlyRate) {
     return axios.put(
-      API_URL + "organisations",
+      API_URL + "organisations/" + id,
       {
-        id: id,
         name: name,
         hourly_rate: hourlyRate,
       },

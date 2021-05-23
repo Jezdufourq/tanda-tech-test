@@ -16,7 +16,6 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 import { organisations, createOrganisation } from "../actions/organisations";
-import { connect } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
