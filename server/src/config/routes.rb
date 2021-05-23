@@ -21,6 +21,9 @@ Rails.application.routes.draw do
       # put shifts
       # delete shifts
       resources :shifts
+      namespace :organisation do
+        get '/:id/shifts', to: 'organisation_shift#index'
+      end
 
       resources :users
       namespace :user do

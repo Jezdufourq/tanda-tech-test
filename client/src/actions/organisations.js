@@ -145,9 +145,9 @@ export const joinOrganisation = (orgId, userId) => (dispatch) => {
   );
 };
 
-export const setCurrentOrganisation = (orgId) => (dispatch) => {
+export const setCurrentOrganisation = (org) => (dispatch) => {
   dispatch({
     type: SET_CURRENT_ORGANISATION,
-    payload: orgId,
+    payload: org,
   });
 };

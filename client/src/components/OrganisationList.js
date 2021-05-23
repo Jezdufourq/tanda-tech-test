@@ -27,9 +27,9 @@ export default function OrganisationList(props) {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  function enterOrg(id) {
+  function enterOrg(org) {
+    dispatch(setCurrentOrganisation(org));
     history.push("/shifts");
-    dispatch(setCurrentOrganisation(id));
   }
 
   return (
@@ -41,7 +41,7 @@ export default function OrganisationList(props) {
               <ListItem button>
                 <ListItemText primary={v.name} />
                 <ListItemSecondaryAction>
-                  <ArrowForwardIosIcon onClick={() => enterOrg(v.id)} />
+                  <ArrowForwardIosIcon onClick={() => enterOrg(v)} />
                 </ListItemSecondaryAction>
               </ListItem>
             );

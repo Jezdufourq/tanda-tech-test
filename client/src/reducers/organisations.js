@@ -10,7 +10,7 @@ import {
 const initialState = {
   currentOrgs: [],
   userOrgs: [],
-  currentOrganisationId: null,
+  currentOrganisation: null,
 };
 export default function Organisations(state = initialState, action) {
   const { type, payload } = action;
@@ -44,7 +44,7 @@ export default function Organisations(state = initialState, action) {
     case SET_CURRENT_ORGANISATION:
       return {
         ...state,
-        currentOrganisationId: payload,
+        currentOrganisation: payload,
       };
     default:
       return state;

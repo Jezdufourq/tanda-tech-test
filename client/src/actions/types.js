@@ -12,6 +12,8 @@ export const SET_MESSAGE = "SET_MESSAGE";
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 
 // Shifts
+export const GET_CURRENT_SHIFTS = "GET_CURRENT_SHIFTS";
+export const CREATE_SHIFT = "CREATE_SHIFT";
 
 // Organisations
 export const GET_ORGANISATIONS_SUCCESS = "GET_ORGANISATIONS_SUCCESS";
