@@ -46,6 +46,8 @@ This will give you a list of all of the routs on the rails app. You can then tes
 # General Architecture (server/datebase)
 
 You can find out the general architecture for the backend here.
+<img width="922" alt="Screen Shot 2021-05-24 at 10 14 47 pm" src="https://user-images.githubusercontent.com/38039863/119346519-a95a6500-bcdd-11eb-8629-901635563344.png">
+
 
 # Futher comments
 
