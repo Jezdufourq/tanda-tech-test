@@ -15,7 +15,11 @@ import {
   DialogContent,
 } from "@material-ui/core";
 
-import { editOrganisation, joinOrganisation } from "../actions/organisations";
+import {
+  editOrganisation,
+  joinOrganisation,
+  myOrganisations,
+} from "../actions/organisations";
 import { useDispatch, useSelector } from "react-redux";
 import { organisations } from "../actions/organisations";
 import { useEffect, useState } from "react";

@@ -17,7 +17,7 @@ class Api::V1::User::OrganisationUserController < ApplicationController
         @organisation_user = OrganisationUser.new(user: @user, organisation: @organisation)
         if @organisation_user.valid?
             @organisation_user.save
-            @organisation_user = OrganisationUser.where("user_id = ?", @user.id)
+            @organisation_user = OrganisationUser.where("user_id = ?", @user.id).includes(:organisation).collect(&:organisation).flatten
             render json: @organisation_user, status: 200
         else
             render json: { error: 'failed to sign up to organisation' }, status: :not_acceptable
