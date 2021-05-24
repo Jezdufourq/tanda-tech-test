@@ -19,8 +19,7 @@ yarn start
 This will start a local server on port 8080
 
 ## Server
-Some comments on the server. The server is a ruby on rails application. It exposes API endpoints for the client to consume. In addition, it creates a has for the password, as well as a JWT using a credentials key. You will need to setup the credentials key on your local machine for the JWT to work (I have not committed this to github). To set up the credentials key, do the following:
-
+Some comments on the server. The server is a ruby on rails application. It exposes API endpoints for the client to consume. In addition, it creates a has for the password, as well as a JWT using a credentials key. I have committed this credentials key to github (as this project is not live and is not sensitive). However, please note that in practice, you DO NOT commit these keys to github (just not that it was done in this case for ease of setup). It can be found under server/src/config/credentials.yml.enc.
 
 It is assumed that you have the latest version of ruby and rails installed. Run the following commands
 
