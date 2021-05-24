@@ -20,6 +20,10 @@ const useStyles = makeStyles((theme) => ({
   title: {
     margin: theme.spacing(4, 0, 2),
   },
+  dialog: {
+    margin: theme.spacing(4),
+    alignItems: "center",
+  },
 }));
 
 export default function OrganisationList(props) {

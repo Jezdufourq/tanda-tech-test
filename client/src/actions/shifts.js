@@ -31,4 +31,34 @@ export const getCurrentShiftsOnOrgId = (organisationId) => (dispatch) => {
 
 export const createShift = (startTime, endTime, breakLength, userId, orgId) => (
   dispatch
-) => {};
+) => {
+  return ShiftsService.createShift(
+    startTime,
+    endTime,
+    breakLength,
+    userId,
+    orgId
+  ).then(
+    (response) => {
+      dispatch({
+        type: CREATE_SHIFT,
+        payload: response.data,
+      });
+    },
+    (error) => {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      dispatch({
+        type: SET_MESSAGE,
+        payload: message,
+      });
+
+      return Promise.reject();
+    }
+  );
+};

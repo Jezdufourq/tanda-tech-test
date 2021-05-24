@@ -15,6 +15,7 @@ export default function Shifts(state = initialState, action) {
     case CREATE_SHIFT:
       return {
         ...state,
+        currentShifts: payload,
       };
     default:
       return state;

@@ -40,7 +40,7 @@ export default function ShiftTable(props) {
           {currentShiftData.map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
-                {row.user_id}
+                {row.user.name}
               </TableCell>
               <TableCell align="right">
                 {moment(row.start_time).format("DD/MM/YYYY")}
