@@ -1,18 +1,58 @@
-> **Want to work at Tanda? Do one of these challenges and email it to developers@tanda.co**!
+# Introduction
 
-Tanda Code Challenges
-=================================
+This is a web application for the Tanda challenge. The tech stack is a ruby on rails backend, with a react SPA frontend, using the material UI library. It also uses JWT's to authenticate the users requests.
 
-Welcome to the Tanda Code Challenges! If you've been sent this link, it's because we are keen to see your programming or design skills in action. (If you've stumbled across this repo, we're also keen to see your skills in action - feel free to have a go at the challenges!)
+# Getting started
 
-Each challenge will have more information about how to complete the challenge, and how to submit them when you're done. If you get stuck at
-any stage, please ask! If you've been chatting to someone from Tanda, email them back, otherwise just send an email to developers@tanda.co
-and we'll be happy to help you out.
+To run the application, create two terminal windows. Change the directory into the source file for both the client and the server. Please see the instructions below for each of the applications.
 
-By the way, if you find any bugs or things you think could be improved in these challenges, please submit a pull request :)
+## Client
 
-## Why does this exist?
+It is assumed that you have the latest version of nodejs and yarn installed. Run the following commands.
 
-Most companies ask you to email them a resume. We think resumes are dumb. Rather than telling us what you can do, we think it's best to show us what you can do! We also want to see that you can [apply, not just remember](https://blog.testdome.com/blooms-taxonomy/). These challenges are an easy way to do both.
+```
+cd /client
+yarn install
+yarn start
+```
 
-![resumes_are_dumb.jpg](https://user-images.githubusercontent.com/509837/37746609-c8bfff9e-2dc6-11e8-9228-5d1772ff50d6.JPG)
+This will start a local server on port 8080
+
+## Server
+
+It is assumed that you have the latest version of ruby and rails installed. Run the following commands
+
+```
+cd /server
+cd /src
+gem install
+rails db:purge
+rails db:migrate
+rails s
+```
+
+This will start a local server on port 3000
+
+## More information
+
+If you would like to see all of the API endpoints which the rails app exposes, run the following command.
+
+```
+rails routes
+```
+
+This will give you a list of all of the routs on the rails app. You can then test these routes using Insomnia or Postman.
+
+# General Architecture (server/datebase)
+
+You can find out the general architecture for the backend here.
+
+# Futher comments
+
+This challenge was done to address the requirements in these two challenges provided by Tanda [Backend](https://github.com/TandaHQ/work-samples/tree/master/adnat%20(backend)) and [Frontend](https://github.com/TandaHQ/work-samples/tree/master/adnat%20(react)). The additions which this application has according to the README file in the backend challenge are:
+
+* A User can sign up to multiple organisations (HARD)
+* Javascript enhancements (i.e react SPA)
+* Datepicker for shift date field
+
+This solution is a work in progress, and there are some bugs. In addition, not all of the API endpoints have the correct error handling required. These are for future improvements
