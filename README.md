@@ -1,13 +1,13 @@
 # Introduction
 
-This is a web application for the Tanda challenge. The tech stack is a ruby on rails backend, with a react SPA frontend, using the material UI library. It also uses JWT's to authenticate the users requests.
+This is a web application for the Tanda challenge. The tech stack is a ruby on rails backend, with a react SPA frontend, using the material UI library. It also uses JWT's to authenticate the users requests on the login screen.
 
 # Getting started
 
 To run the application, create two terminal windows. Change the directory into the source file for both the client and the server. Please see the instructions below for each of the applications.
 
 ## Client
-
+Some comments on the client side. As stated, the client is using react with a material ui component library. In addition, it uses redux to manage state between the components, as well as to store the JWT in the local storage to authenticate a logged in users requests.
 It is assumed that you have the latest version of nodejs and yarn installed. Run the following commands.
 
 ```
@@ -19,6 +19,8 @@ yarn start
 This will start a local server on port 8080
 
 ## Server
+Some comments on the server. The server is a ruby on rails application. It exposes API endpoints for the client to consume. In addition, it creates a has for the password, as well as a JWT using a credentials key. You will need to setup the credentials key on your local machine for the JWT to work (I have not committed this to github). To set up the credentials key, do the following:
+
 
 It is assumed that you have the latest version of ruby and rails installed. Run the following commands
 
