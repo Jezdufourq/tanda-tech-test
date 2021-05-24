@@ -11,6 +11,9 @@ import {
   Box,
   Button,
 } from "@material-ui/core";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { logout } from "../actions/auth";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,6 +36,13 @@ const useStyles = makeStyles((theme) => ({
 
 function Header({ user, isLoggedIn }) {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  function handleLogOut() {
+    dispatch(logout());
+    history.push("/");
+  }
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.headerStyle}>
@@ -44,7 +54,7 @@ function Header({ user, isLoggedIn }) {
               </Box>
             </Typography>
             <IconButton edge="end" aria-label="edit">
-              <ExitToAppIcon />
+              <ExitToAppIcon onClick={handleLogOut} />
             </IconButton>
           </Toolbar>
         ) : null}
