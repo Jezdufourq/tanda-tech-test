@@ -57,4 +57,4 @@ This challenge was done to address the requirements in these two challenges prov
 * Javascript enhancements (i.e react SPA)
 * Datepicker for shift date field
 
-This solution is a work in progress, and there are some bugs. In addition, not all of the API endpoints have the correct error handling required. These are for future improvements
+This solution is a work in progress, and there are some bugs. In addition, not all of the API endpoints have the correct error handling required. These are for future improvements. In addition, the dockerfile has not been implemented yet.
