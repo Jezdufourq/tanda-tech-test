@@ -10,7 +10,9 @@ import {
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { useHistory } from "react-router-dom";
 import { setCurrentOrganisation } from "../actions/organisations";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { myOrganisations } from "../actions/organisations";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,21 +28,44 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function OrganisationList(props) {
+export default function OrganisationList() {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+  const myOrgs = useSelector((state) => state.organisations.userOrgs);
+  const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState(false);
+
+  useEffect(() => {
+    dispatch(myOrganisations())
+      .then((response) => {
+        console.log(response);
+      })
+      .catch(() => {
+        setAlert(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
   function enterOrg(org) {
     dispatch(setCurrentOrganisation(org));
     history.push("/shifts");
   }
 
+  if (loading) {
+    return (
+      <div className={classes.root}>
+        <div className={classes.demo}></div>
+      </div>
+    );
+  }
   return (
     <div className={classes.root}>
       <div className={classes.demo}>
         <List>
-          {props.items.map((v, i) => {
+          {myOrgs.map((v, i) => {
             return (
               <ListItem button>
                 <ListItemText primary={v.name} />

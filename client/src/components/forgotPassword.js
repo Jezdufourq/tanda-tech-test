@@ -8,8 +8,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
 import Box from "@material-ui/core/Box";
+import Alert from "@material-ui/lab/Alert";
+
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { resetPassword } from "../actions/auth";
 import { useHistory } from "react-router-dom";
 
@@ -46,6 +48,8 @@ export const ForgotPassword = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const errorMessage = useSelector((state) => state.message);
+
   function handleSubmit(event) {
     setLoading(true);
     event.preventDefault();
@@ -61,6 +65,16 @@ export const ForgotPassword = (props) => {
 
   return (
     <Container component="main" maxWidth="xs">
+      {alert ? (
+        <Alert
+          severity="error"
+          onClose={() => {
+            setAlert(false);
+          }}
+        >
+          {errorMessage}
+        </Alert>
+      ) : null}
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">

@@ -17,6 +17,8 @@ import {
 
 import { editOrganisation, joinOrganisation } from "../actions/organisations";
 import { useDispatch, useSelector } from "react-redux";
+import { organisations } from "../actions/organisations";
+import { useEffect, useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UpdatableList(props) {
+export default function UpdatableList() {
   const classes = useStyles();
   const [openDialog, setOpenDialog] = React.useState(false);
   const [orgName, setOrgName] = React.useState("");
@@ -40,10 +42,26 @@ export default function UpdatableList(props) {
   const [orgHourlyRate, setOrgHourlyRate] = React.useState("");
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.auth.user.id);
+  const orgs = useSelector((state) => state.organisations.currentOrgs);
+  const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState(false);
+
+  useEffect(() => {
+    dispatch(organisations())
+      .then((response) => {
+        console.log(response);
+      })
+      .catch(() => {
+        setAlert(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
   function joinOrg(id) {
     setOrgId(id);
-    dispatch(joinOrganisation(orgId, userId));
+    dispatch(joinOrganisation(id, userId));
   }
 
   function editOrg() {
@@ -60,11 +78,18 @@ export default function UpdatableList(props) {
     setOpenDialog(false);
   }
 
+  if (loading) {
+    return (
+      <div className={classes.root}>
+        <div className={classes.demo}></div>
+      </div>
+    );
+  }
   return (
     <div className={classes.root}>
       <div className={classes.demo}>
         <List>
-          {props.items.map((v, i) => {
+          {orgs.map((v, i) => {
             return (
               <ListItem button>
                 <ListItemText primary={v.name} />

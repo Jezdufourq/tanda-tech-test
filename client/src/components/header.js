@@ -3,6 +3,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import IconButton from "@material-ui/core/IconButton";
+import Container from "@material-ui/core/Container";
 import {
   AppBar,
   Toolbar,
@@ -14,16 +15,10 @@ import {
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { logout } from "../actions/auth";
-
+import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
+    justifyContent: "spaceBetween",
   },
   text: {
     color: "black",
@@ -44,22 +39,24 @@ function Header({ user, isLoggedIn }) {
     history.push("/");
   }
   return (
-    <div className={classes.root}>
+    <Container component="main" maxWidth="sm" className={classes.root}>
       <AppBar position="static" className={classes.headerStyle}>
         {isLoggedIn ? (
           <Toolbar>
-            <Typography variant="h5">
-              <Box fontWeight="fontWeightBold" className={classes.text}>
-                Welcome Back {user.name} 👋
-              </Box>
-            </Typography>
-            <IconButton edge="end" aria-label="edit">
-              <ExitToAppIcon onClick={handleLogOut} />
-            </IconButton>
+            <Grid justify="space-between" alignItems="center" container="true">
+              <Typography variant="h5">
+                <Box fontWeight="fontWeightBold" className={classes.text}>
+                  Welcome Back {user.name} 👋
+                </Box>
+              </Typography>
+              <IconButton edge="end" aria-label="edit">
+                <ExitToAppIcon onClick={handleLogOut} />
+              </IconButton>
+            </Grid>
           </Toolbar>
         ) : null}
       </AppBar>
-    </div>
+    </Container>
   );
 }
 function mapStateToProps(state) {

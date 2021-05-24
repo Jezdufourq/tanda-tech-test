@@ -13,7 +13,7 @@ import Alert from "@material-ui/lab/Alert";
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { login } from "../actions/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -47,6 +47,7 @@ export const Login = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const errorMessage = useSelector((state) => state.message);
   useEffect(() => {
     if (props.loggedIn) {
       history.push("/home");
@@ -62,6 +63,8 @@ export const Login = (props) => {
       })
       .catch(() => {
         setAlert(true);
+      })
+      .finally(() => {
         setLoading(false);
       });
   }
@@ -75,7 +78,7 @@ export const Login = (props) => {
             setAlert(false);
           }}
         >
-          {props.message}
+          {errorMessage}
         </Alert>
       ) : null}
       <CssBaseline />

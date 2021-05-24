@@ -15,7 +15,7 @@ import {
   DialogContent,
 } from "@material-ui/core";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   organisations,
   createOrganisation,
@@ -56,8 +56,6 @@ export const Home = (props) => {
   const [orgName, setOrgName] = React.useState("");
   const [orgHourlyRate, setOrgHourlyRate] = React.useState("");
   const dispatch = useDispatch();
-  const orgs = useSelector((state) => state.organisations.currentOrgs);
-  const myOrgs = useSelector((state) => state.organisations.userOrgs);
   const classes = useStyles();
 
   useEffect(() => {
@@ -87,7 +85,7 @@ export const Home = (props) => {
         </Typography>
       </div>
       <div>
-        <OrganisationList items={myOrgs} />
+        <OrganisationList />
       </div>
       <div className={classes.text}>
         <Typography component="h1" variant="h5">
@@ -95,13 +93,7 @@ export const Home = (props) => {
         </Typography>
       </div>
       <div>
-        {orgs.length === 0 ? (
-          <Typography component="h1" variant="h5">
-            <Box>No current organisations</Box>
-          </Typography>
-        ) : (
-          <UpdatableList items={orgs} />
-        )}
+        <UpdatableList />
       </div>
       <Button
         type="submit"
